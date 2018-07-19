@@ -23,5 +23,7 @@ mix phx.gen.schema Schedule.Audience audiences slug:string:unique name:string
 
 mix phx.gen.schema Schedule.Talk talks slug:string:unique title:string slot_id:references:schedule_slots speaker_id:references:speakers category_id:references:categories audience_id:references:audiences location_id:references:locations description:text
 
+mix phx.gen.schema Schedule.Event events slug:string:unique name:string slot_id:references:schedule_slots
+
 
 Fawkes.Schedule.Slot |> Fawkes.Repo.all |> Enum.each(fn(slot) -> Fawkes.Repo.delete(slot) end)

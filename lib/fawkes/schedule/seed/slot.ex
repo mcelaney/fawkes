@@ -84,77 +84,77 @@ defmodule Fawkes.Schedule.Seed.Slot do
       },
 
       %{
-        slug: :slot_e,
+        slug: :slot_f,
         date: "Thursday, September 7, 2018",
         time: "8:00 AM - 8:50 AM"
       },
       %{
-        slug: :slot_f,
+        slug: :slot_g,
         date: "Thursday, September 7, 2018",
         time: "8:50 AM - 9:05 AM"
       },
       %{
-        slug: :slot_g,
+        slug: :slot_h,
         date: "Thursday, September 7, 2018",
         time: "9:05 AM - 10:05 AM"
       },
       %{
-        slug: :slot_h,
+        slug: :slot_i,
         date: "Thursday, September 7, 2018",
         time: "10:05 AM - 10:35 AM"
       },
       %{
-        slug: :slot_i,
+        slug: :slot_j,
         date: "Thursday, September 7, 2018",
         time: "10:35 AM - 11:15 AM"
       },
       %{
-        slug: :slot_j,
+        slug: :slot_k,
         date: "Thursday, September 7, 2018",
         time: "11:20 AM - 12:00 PM"
       },
       %{
-        slug: :slot_k,
+        slug: :slot_l,
         date: "Thursday, September 7, 2018",
         time: "12:00 PM - 1:30 PM"
       },
       %{
-        slug: :slot_l,
+        slug: :slot_m,
         date: "Thursday, September 7, 2018",
         time: "1:30 PM - 2:10 PM"
       },
       %{
-        slug: :slot_m,
+        slug: :slot_n,
         date: "Thursday, September 7, 2018",
         time: "2:15 PM - 2:55 PM"
       },
       %{
-        slug: :slot_n,
+        slug: :slot_o,
         date: "Thursday, September 7, 2018",
         time: "2:55 PM - 3:30 PM"
       },
       %{
-        slug: :slot_o,
+        slug: :slot_p,
         date: "Thursday, September 7, 2018",
         time: "3:30 PM - 4:10 PM"
       },
       %{
-        slug: :slot_p,
+        slug: :slot_q,
         date: "Thursday, September 7, 2018",
         time: "4:15 PM - 4:55 PM"
       },
       %{
-        slug: :slot_q,
+        slug: :slot_r,
         date: "Thursday, September 7, 2018",
         time: "4:55 PM - 5:15 PM"
       },
       %{
-        slug: :slot_r,
+        slug: :slot_s,
         date: "Thursday, September 7, 2018",
         time: "5:15 PM - 5:30 PM"
       },
       %{
-        slug: :slot_s,
+        slug: :slot_t,
         date: "Thursday, September 7, 2018",
         time: "5:30 PM - 6:30 PM"
       }

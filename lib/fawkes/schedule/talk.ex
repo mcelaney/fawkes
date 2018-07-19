@@ -14,7 +14,7 @@ defmodule Fawkes.Schedule.Talk do
     field :title, :string
 
     belongs_to :slot, Slot
-    belongs_to :speaker, Speaker, foreign_key: :profile_id
+    belongs_to :speaker, Speaker
     belongs_to :category, Category
     belongs_to :audience, Audience
     belongs_to :location, Location
@@ -25,8 +25,8 @@ defmodule Fawkes.Schedule.Talk do
   @doc false
   def changeset(talk, attrs) do
     talk
-    |> cast(attrs, [:slug, :title, :description])
-    |> validate_required([:slug, :title, :description])
+    |> cast(attrs, [:slug, :title, :description, :slot_id, :speaker_id, :category_id, :audience_id, :location_id])
+    |> validate_required([:slug, :title, :slot_id, :speaker_id, :category_id, :audience_id, :location_id])
     |> unique_constraint(:slug)
     |> assoc_constraint(:slot)
     |> assoc_constraint(:speaker)
