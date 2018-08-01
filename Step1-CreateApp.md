@@ -1,6 +1,71 @@
-1. Create application
+To create a new project type:
+
+```
+mix phx.new [project name]
+```
+
+Example:
+
+```
+mix phx.new speaker
+```
+
+Running that command will generate the Phoenix application for you. After the file creation, it will ask you to fetch and install dependencies. Type `y`.
+
+```
+Fetch and install dependencies? [Yn] y
+```
+
+Note by saying yes, it ran these commands for you:
+
+This commands downloads your depdencies:
+
+```
+mix deps.get
+```
+
+Phoenix uses Brunch.io for asset management by default. Brunch.io’s dependencies are installed via the node package manager, not mix. Run this command to install your node dependencies:
+
+```
+cd assets && npm install && node node_modules/brunch/bin/brunch build
+```
+
+This compile the project:
+
+```
+mix deps.compile
+```
+Note that Phoenix auto reload for you so you don't have to run compile every time you make a file change.
+
+After the application installed your dependencies, it tells you what to do next.
+
+1. Change into your project directory
+
+  ```
+  cd speaker
+  ```
+
+2. Open the application in your favorite editor
+3. Open the file `config/dev.exs`. Ensure your username and password for Postgres is correct.
+2. Ecto allows our Phoenix application to communicate with a data store, such as PostgreSQL or MongoDB. Create your database by running:
+
+  ```
+  mix ecto.create
+  ```
+
+4. Start your server
+
+  ```
+  mix phx.server
+  ```
+
+5. Open [http://localhost:4000](http://localhost:4000) in your favorite browser.
+
+## Congratulations, you got a server!!!
+
+<img src="https://media.giphy.com/media/10Fqkgb4tQVtOo/giphy.gif">
 
 
+### Prettifying the page
 
-2. Run `mix deps.get` to get the dependency
-3. Run `mix ecto.create` to create database
+TODO: Add content to download image, css, and app.html
