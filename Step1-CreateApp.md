@@ -16,9 +16,9 @@ Running that command will generate the Phoenix application for you. After the fi
 Fetch and install dependencies? [Yn] y
 ```
 
-Note by saying yes, it ran these commands for you:
+By saying yes, it ran these commands for you:
 
-This commands downloads your depdencies:
+This commands downloads your dependencies:
 
 ```
 mix deps.get
@@ -35,8 +35,10 @@ This compile the project:
 ```
 mix deps.compile
 ```
+
 Note that Phoenix auto reload for you so you don't have to run compile every time you make a file change.
 
+## Running the server
 After the application installed your dependencies, it tells you what to do next.
 
 1. Change into your project directory

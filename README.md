@@ -10,14 +10,18 @@ git commit -m "First Commit"
 mix phx.server
 ```
 
+mix phx.gen.schema Schedule.Category categories slug:string:unique name:string
 
-mix phx.gen.schema Schedule.Slot schedule_slots slug:string:unique date:string time:string
+
 
 mix phx.gen.schema Schedule.Speaker speakers slug:string:unique image:string first:string last:string company:string github:string twitter:string description:text
 
+
+mix phx.gen.schema Schedule.Slot schedule_slots slug:string:unique date:string time:string
+
+
 mix phx.gen.schema Schedule.Location locations slug:string:unique name:string
 
-mix phx.gen.schema Schedule.Category categories slug:string:unique name:string
 
 mix phx.gen.schema Schedule.Audience audiences slug:string:unique name:string
 
