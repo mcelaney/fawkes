@@ -13,12 +13,12 @@ defmodule Fawkes.ScheduleTest do
     setup do
       {:ok, slot_2} =
         %Slot{}
-        |> Slot.changeset(%{slug: :slot_2, date: "Thursday, September 6, 2018", time: "8:30 AM - 8:45 AM"})
+        |> Slot.changeset(%{slug: :slot_2, start: "2018-09-06 08:30:00", finish: "2018-09-06 08:45:00"})
         |> Repo.insert()
 
       {:ok, slot_1} =
         %Slot{}
-        |> Slot.changeset(%{slug: :slot_1, date: "Thursday, September 6, 2018", time: "7:00 AM - 8:30 AM"})
+        |> Slot.changeset(%{slug: :slot_1, start: "2018-09-06 07:00:00", finish: "2018-09-06 08:30:00"})
         |> Repo.insert()
 
       {:ok, event} =
@@ -192,7 +192,7 @@ defmodule Fawkes.ScheduleTest do
       assert slot_talk_3.speaker.id == speaker_3.id
     end
 
-    test "fetch_by_audience/1 returns the schedule in order with preloads",
+    test "fetch_by_audience/1 returns the schedule in order (by start time) with preloads",
          %{slot_2: slot_2, talk_1: talk_1} do
       [%{talks: [talk_result|[]]} = slot_result|[]] =
         Schedule.fetch_by_audience("beginner")
@@ -201,13 +201,31 @@ defmodule Fawkes.ScheduleTest do
       assert talk_result.id == talk_1.id
     end
 
-    test "fetch_by_category/1 returns the schedule in order with preloads",
+    test "fetch_by_category/1 returns the schedule in order (by start time) with preloads",
          %{slot_2: slot_2, talk_3: talk_3} do
       [%{talks: [talk_result|[]]} = slot_result|[]] =
         Schedule.fetch_by_category("nerves")
 
       assert slot_result.id == slot_2.id
       assert talk_result.id == talk_3.id
+    end
+
+    test "fetch_speakers/0 returns all speakers in last-name-alphabetical",
+         %{speaker_1: speaker_1, speaker_2: speaker_2, speaker_3: speaker_3} do
+      [speaker_1_result, speaker_2_result, speaker_3_result] = Schedule.fetch_speakers()
+      assert speaker_1_result.id == speaker_2.id
+      assert speaker_2_result.id == speaker_3.id
+      assert speaker_3_result.id == speaker_1.id
+    end
+
+    test "fetch_speakers/1 returns a speaker", %{speaker_3: speaker_3} do
+      result = Schedule.fetch_speakers("anna_neyzberg")
+      assert result.id == speaker_3.id
+    end
+
+    test "fetch_talks/1 returns a talk", %{talk_2: talk_2} do
+      result = Schedule.fetch_talks("slot_5_lance_halvorsen")
+      assert result.id == talk_2.id
     end
   end
 end

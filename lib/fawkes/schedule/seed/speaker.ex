@@ -14,7 +14,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
     [
       %{
         slug: :jose_valim,
-        image: "images/jose-valim.jpg",
+        image: "/images/jose-valim.jpg",
         first: "José",
         last: "Valim",
         company: "Plataformatec",
@@ -24,7 +24,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :lance_halvorsen,
-        image: "images/lance-halvorsen.jpg",
+        image: "/images/lance-halvorsen.jpg",
         first: "Lance",
         last: "Halvorsen",
         company: "LeTote",
@@ -34,7 +34,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :anna_neyzberg,
-        image: "images/anna-neyzberg.jpg",
+        image: "/images/anna-neyzberg.jpg",
         first: "Anna ",
         last: "Neyzberg",
         company: "Carbon Five",
@@ -44,7 +44,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :luke_imhoff,
-        image: "images/luke-imhoff.jpg",
+        image: "/images/luke-imhoff.jpg",
         first: "Luke",
         last: "Imhoff",
         company: "DockYard",
@@ -54,7 +54,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :bailey_miller,
-        image: "images/bailey-miller",
+        image: "/images/bailey-miller",
         first: "Bailey",
         last: "Miller",
         company: "Gaslight",
@@ -63,7 +63,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :fahad_almusharraf,
-        image: "images/fahad-almusharraf.jpg",
+        image: "/images/fahad-almusharraf.jpg",
         first: "Fahad",
         last: "Almusharraf",
         company: "Student",
@@ -73,7 +73,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :manu_ajith,
-        image: "images/manu-ajith.jpg",
+        image: "/images/manu-ajith.jpg",
         first: "Manu",
         last: "Ajith",
         company: "9Piecesof8 Software Labs",
@@ -83,7 +83,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :aaron_renner,
-        image: "images/aaron-renner.jpg",
+        image: "/images/aaron-renner.jpg",
         first: "Aaron",
         last: "Renner",
         company: "ActiveProspect",
@@ -93,7 +93,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :justus_eapen,
-        image: "images/justus-eapen.jpg",
+        image: "/images/justus-eapen.jpg",
         first: "Justus",
         last: "Eapen",
         company: "SmartLogic",
@@ -103,7 +103,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :aish_dahal,
-        image: "images/aish-dahal.jpg",
+        image: "/images/aish-dahal.jpg",
         first: "Aish",
         last: "Dahal",
         company: "PagerDuty",
@@ -113,7 +113,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :catherine_zoller,
-        image: "images/catherine-zoller.jpg",
+        image: "/images/catherine-zoller.jpg",
         first: "Catherine",
         last: "Zoller",
         company: "Mojotech",
@@ -123,7 +123,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :david_schainker,
-        image: "images/david-schainker.jpg",
+        image: "/images/david-schainker.jpg",
         first: "David",
         last: "Schainker",
         github: "schainker",
@@ -132,7 +132,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :maciej_kaszubowski,
-        image: "images/maciej-kaszubowski.jpg",
+        image: "/images/maciej-kaszubowski.jpg",
         first: "Maciej",
         last: "Kaszubowski",
         company: "AppUnite",
@@ -142,7 +142,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :aaron_votre,
-        image: "images/aaron-votre.jpg",
+        image: "/images/aaron-votre.jpg",
         first: "Aaron",
         last: "Votre",
         company: "Corvus Insurance",
@@ -152,7 +152,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :frank_kumro,
-        image: "images/frank-kumro.jpg",
+        image: "/images/frank-kumro.jpg",
         first: "Frank",
         last: "Kumro",
         github: "fkumro",
@@ -161,7 +161,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :ben_marx,
-        image: "images/ben-marx.jpg",
+        image: "/images/ben-marx.jpg",
         first: "Ben",
         last: "Marx",
         company: "Bleacher Report",
@@ -171,7 +171,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :anil_wadghule,
-        image: "images/anil-wadghule.jpg",
+        image: "/images/anil-wadghule.jpg",
         first: "Anil",
         last: "Wadghule",
         company: "Skatter",
@@ -181,7 +181,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :todd_resudek,
-        image: "images/todd-resudek.jpg",
+        image: "/images/todd-resudek.jpg",
         first: "Todd",
         last: "Resudek",
         company: "Weedmaps",
@@ -191,7 +191,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :mathew_gardner,
-        image: "images/mathew-gardner.jpg",
+        image: "/images/mathew-gardner.jpg",
         first: "Mathew",
         last: "Gardner",
         company: "Toyota Connected",
@@ -200,7 +200,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :justin_schneck,
-        image: "images/justin-schneck.jpg",
+        image: "/images/justin-schneck.jpg",
         first: "Justin",
         last: "Schneck",
         github: "mobileoverlord",
@@ -209,7 +209,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :renan_ranelli,
-        image: "images/renan-ranelli.jpg",
+        image: "/images/renan-ranelli.jpg",
         first: "Renan",
         last: "Ranelli",
         company: "Telnyx LLC",
@@ -219,7 +219,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :james_smith,
-        image: "images/james-smith.jpg",
+        image: "/images/james-smith.jpg",
         first: "James",
         last: "Smith",
         company: "Gaslight",
@@ -229,7 +229,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :michael_stalker,
-        image: "images/michael-stalker.jpg",
+        image: "/images/michael-stalker.jpg",
         first: "Michael",
         last: "Stalker",
         company: "RentPath",
@@ -238,7 +238,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :jeff_schomay,
-        image: "images/jeff-schomay.jpg",
+        image: "/images/jeff-schomay.jpg",
         first: "Jeff",
         last: "Schomay",
         company: "Adobe (Seattle)",
@@ -248,7 +248,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :zach_porter,
-        image: "images/zach-porter.jpg",
+        image: "/images/zach-porter.jpg",
         first: "Zach",
         last: "Porter",
         company: "Viget",
@@ -257,7 +257,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :andrew_bennett,
-        image: "images/andrew-bennett.jpg",
+        image: "/images/andrew-bennett.jpg",
         first: "Andrew",
         last: "Bennett",
         company: "Toyota Connected",
@@ -267,7 +267,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :eric_oestrich,
-        image: "images/eric-oestrich.jpg",
+        image: "/images/eric-oestrich.jpg",
         first: "Eric",
         last: "Oestrich",
         company: "SmartLogic, LLC",
@@ -277,7 +277,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :daniel_azuma,
-        image: "images/daniel-azuma.jpg",
+        image: "/images/daniel-azuma.jpg",
         first: "Daniel",
         last: "Azuma",
         company: "Google",
@@ -287,7 +287,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :rafal_studnicki,
-        image: "images/rafal-studnicki.jpg",
+        image: "/images/rafal-studnicki.jpg",
         first: "Rafal",
         last: "Studnicki",
         github: "studzien",
@@ -295,7 +295,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :emerson_macedo,
-        image: "images/emerson-macedo.jpg",
+        image: "/images/emerson-macedo.jpg",
         first: "Emerson",
         last: "Macedo",
         company: "OLX Brazil",
@@ -305,7 +305,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :jerel_unruh,
-        image: "images/jerel-unruh.jpg",
+        image: "/images/jerel-unruh.jpg",
         first: "Jerel",
         last: "Unruh",
         company: "Toyota Connected",
@@ -315,7 +315,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :boyd_multerer,
-        image: "images/boyd-multerer.jpg",
+        image: "/images/boyd-multerer.jpg",
         first: "Boyd",
         last: "Multerer",
         company: "Kry10 Industries",
@@ -325,7 +325,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :joao_britto,
-        image: "images/joao-britto.jpg",
+        image: "/images/joao-britto.jpg",
         first: "João",
         last: "Britto",
         company: "Plataformatec",
@@ -335,7 +335,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :jeffrey_gillis,
-        image: "images/jeffrey-gillis.jpg",
+        image: "/images/jeffrey-gillis.jpg",
         first: "Jeffrey",
         last: "Gillis",
         company: "Optoro, Inc.",
@@ -343,7 +343,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :dan_mcguire,
-        image: "images/dan-mcguire.jpg",
+        image: "/images/dan-mcguire.jpg",
         first: "Dan",
         last: "McGuire",
         company: "Rentpath",
@@ -353,7 +353,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :alex_garibay,
-        image: "images/alex-garibay.jpg",
+        image: "/images/alex-garibay.jpg",
         first: "Alex",
         last: "Garibay",
         company: "DockYard",
@@ -363,7 +363,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :guilherme_de_maio,
-        image: "images/guilherme-de-maio.jpg",
+        image: "/images/guilherme-de-maio.jpg",
         first: "Guilherme",
         last: "de Maio",
         company: "Telnyx",
@@ -373,7 +373,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :enio_lopes,
-        image: "images/enio-lopes.jpg",
+        image: "/images/enio-lopes.jpg",
         first: "Enio",
         last: "Lopes",
         company: "uSwitch",
@@ -383,7 +383,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :chris_mccord,
-        image: "images/chris-mccord.jpg",
+        image: "/images/chris-mccord.jpg",
         first: "Chris",
         last: "McCord",
         github: "chrismccord",

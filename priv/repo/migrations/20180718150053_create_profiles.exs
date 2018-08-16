@@ -6,7 +6,7 @@ defmodule Fawkes.Repo.Migrations.CreateProfiles do
       add :slug, :string
       add :image, :string
       add :first, :string
-      add :last, :string
+      add :last, :citext
       add :company, :string
       add :github, :string
       add :twitter, :string

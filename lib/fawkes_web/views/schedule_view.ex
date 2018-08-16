@@ -9,15 +9,17 @@ defmodule FawkesWeb.ScheduleView do
        end)
   end
 
-  def render_slot(_, %{event: event, time: time}) when not is_nil event do
-    render(__MODULE__, "event.html", time: time, event: event)
+  def render_slot(_, %{event: event} = slot) when not is_nil event do
+    render(__MODULE__, "event.html", slot: slot)
   end
 
-  def render_slot(conn, %{talks: talks, time: time}) do
-    render(__MODULE__, "talks.html", time: time, talks: talks, conn: conn)
+  def render_slot(conn, slot) do
+    render(__MODULE__, "talks.html", slot: slot, conn: conn)
   end
 
   defp group_schedule_by_dates(slots) do
-    Enum.group_by(slots, fn(slot) -> slot.date end)
+    Enum.group_by(slots, fn(slot) ->
+      NaiveDateTime.to_date(slot.start)
+    end)
   end
 end

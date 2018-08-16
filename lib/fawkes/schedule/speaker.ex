@@ -15,6 +15,8 @@ defmodule Fawkes.Schedule.Speaker do
     field :slug, SymbolType
     field :twitter, :string
 
+    has_one :talk, Fawkes.Schedule.Talk
+
     timestamps()
   end
 

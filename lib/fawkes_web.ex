@@ -40,6 +40,16 @@ defmodule FawkesWeb do
       import FawkesWeb.Router.Helpers
       import FawkesWeb.ErrorHelpers
       import FawkesWeb.Gettext
+
+
+
+      def display_time(%{start: start, finish: finish}) do
+        display_time(start) <> " - " <> display_time(finish)
+      end
+      def display_time(time), do: Timex.format!(time, "%l:%M %P", :strftime)
+
+      def display_date(%{start: start}), do: display_date(start)
+      def display_date(date), do: Timex.format!(date, "%A %B %e, %Y", :strftime)
     end
   end
 

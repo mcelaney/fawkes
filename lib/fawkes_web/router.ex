@@ -36,6 +36,8 @@ defmodule FawkesWeb.Router do
     resources "/schedule", ScheduleController, only: [:index]
     resources "/audience", AudienceController, only: [:show]
     resources "/category", CategoryController, only: [:show]
+    resources "/speaker", SpeakerController, only: [:index, :show]
+    resources "/talk", TalkController, only: [:show]
   end
 
   # Definitely logged in scope

@@ -1,3 +1,3 @@
 <div>
-  <h4><%= @time %> - <%= @event.name %></h4>
+  <h4><%= display_time(@slot) %> - <%= @slot.event.name %></h4>
 <div>

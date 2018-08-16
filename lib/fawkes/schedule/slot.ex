@@ -8,9 +8,9 @@ defmodule Fawkes.Schedule.Slot do
   @type t :: %__MODULE__{}
 
   schema "schedule_slots" do
-    field :date, :string
+    field :finish, :naive_datetime
     field :slug, SymbolType
-    field :time, :string
+    field :start, :naive_datetime
 
     has_one :event, Event
     has_many :talks, Talk
@@ -21,8 +21,8 @@ defmodule Fawkes.Schedule.Slot do
   @doc false
   def changeset(slot, attrs) do
     slot
-    |> cast(attrs, [:slug, :date, :time])
-    |> validate_required([:slug, :date, :time])
+    |> cast(attrs, [:slug, :start, :finish])
+    |> validate_required([:slug, :start, :finish])
     |> unique_constraint(:slug)
   end
 end

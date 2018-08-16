@@ -1,15 +1,13 @@
-<h4><%= @time %></h4>
-<%= for talk <- @talks do %>
+<h4><%= display_time(@slot) %></h4>
+<%= IO.inspect @slot.start %>
+<%= for talk <- @slot.talks do %>
 <div>
-  <h4><%= talk.title %></h4>
-  <h5><%= talk.speaker.first %> <%= talk.speaker.last %></h5>
+  <h4><%= link(talk.title, to: talk_path(@conn, :show, talk.slug)) %></h4>
+  <h5><%= link("#{talk.speaker.first} #{talk.speaker.last}", to: speaker_path(@conn, :show, talk.speaker.slug)) %></h5>
   <p>Located in: <%= talk.location.name %></p>
   <ul>
     <li><%= link(talk.category.name, to: category_path(@conn, :show, talk.category.slug)) %></li>
     <li><%= link(talk.audience.name, to: audience_path(@conn, :show, talk.audience.slug)) %></li>
   </ul>
-  <div>
-    <%= raw(talk.description) %>
-  </div>
 </div>
 <% end %>

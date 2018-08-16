@@ -12,151 +12,150 @@ defmodule Fawkes.Schedule.Seed.Slot do
 
   def data do
     [
-      %{
-        slug: :slot_1,
-        date: "Thursday, September 6, 2018",
-        time: "7:00 AM - 8:30 AM"
+      %{slug: :slot_1,
+        start: "2018-09-06 07:00:00",
+        finish: "2018-09-06 08:30:00"
       },
       %{
         slug: :slot_2,
-        date: "Thursday, September 6, 2018",
-        time: "8:30 AM - 8:45 AM"
+        start: "2018-09-06 08:30:00",
+        finish: "2018-09-06 08:45:00"
       },
       %{
         slug: :slot_3,
-        date: "Thursday, September 6, 2018",
-        time: "8:45 AM - 9:45 AM"
+        start: "2018-09-06 08:45:00",
+        finish: "2018-09-06 09:45:00"
       },
       %{
         slug: :slot_4,
-        date: "Thursday, September 6, 2018",
-        time: "9:45 AM - 10:15 AM"
+        start: "2018-09-06 09:45:00",
+        finish: "2018-09-06 10:15:00"
       },
       %{
         slug: :slot_5,
-        date: "Thursday, September 6, 2018",
-        time: "10:15 AM - 10:55 AM"
+        start: "2018-09-06 10:15:00",
+        finish: "2018-09-06 10:55:00"
       },
       %{
         slug: :slot_6,
-        date: "Thursday, September 6, 2018",
-        time: "11:00 AM - 11:40 AM"
+        start: "2018-09-06 11:00:00",
+        finish: "2018-09-06 11:40:00"
       },
       %{
         slug: :slot_7,
-        date: "Thursday, September 6, 2018",
-        time: "11:40 AM - 1:00 PM"
+        start: "2018-09-06 11:40:00",
+        finish: "2018-09-06 13:00:00"
       },
       %{
         slug: :slot_8,
-        date: "Thursday, September 6, 2018",
-        time: "1:00 PM - 1:40 PM"
+        start: "2018-09-06 13:00:00",
+        finish: "2018-09-06 13:40:00"
       },
       %{
         slug: :slot_9,
-        date: "Thursday, September 6, 2018",
-        time: "1:45 PM - 2:25 PM"
+        start: "2018-09-06 13:45:00",
+        finish: "2018-09-06 14:25:00"
       },
       %{
         slug: :slot_a,
-        date: "Thursday, September 6, 2018",
-        time: "2:25 PM - 3:00 PM"
+        start: "2018-09-06 14:25:00",
+        finish: "2018-09-06 15:00:00"
       },
       %{
         slug: :slot_b,
-        date: "Thursday, September 6, 2018",
-        time: "3:00 PM - 3:40 PM"
+        start: "2018-09-06 15:00:00",
+        finish: "2018-09-06 15:40:00"
       },
       %{
         slug: :slot_c,
-        date: "Thursday, September 6, 2018",
-        time: "3:45 PM - 4:25 PM"
+        start: "2018-09-06 15:45:00",
+        finish: "2018-09-06 16:25:00"
       },
       %{
         slug: :slot_d,
-        date: "Thursday, September 6, 2018",
-        time: "4:25 PM - 4:45 PM"
+        start: "2018-09-06 16:25:00",
+        finish: "2018-09-06 16:45:00"
       },
       %{
         slug: :slot_e,
-        date: "Thursday, September 6, 2018",
-        time: "4:45 PM - 6:15 PM"
+        start: "2018-09-06 16:45:00",
+        finish: "2018-09-06 18:15:00"
       },
 
       %{
         slug: :slot_f,
-        date: "Friday, September 7, 2018",
-        time: "8:00 AM - 8:50 AM"
+        start: "2018-09-07 08:00:00",
+        finish: "2018-09-07 08:50:00"
       },
       %{
         slug: :slot_g,
-        date: "Friday, September 7, 2018",
-        time: "8:50 AM - 9:05 AM"
+        start: "2018-09-07 08:50:00",
+        finish: "2018-09-07 09:05:00"
       },
       %{
         slug: :slot_h,
-        date: "Friday, September 7, 2018",
-        time: "9:05 AM - 10:05 AM"
+        start: "2018-09-07 09:05:00",
+        finish: "2018-09-07 10:05:00"
       },
       %{
         slug: :slot_i,
-        date: "Friday, September 7, 2018",
-        time: "10:05 AM - 10:35 AM"
+        start: "2018-09-07 10:05:00",
+        finish: "2018-09-07 10:35:00"
       },
       %{
         slug: :slot_j,
-        date: "Friday, September 7, 2018",
-        time: "10:35 AM - 11:15 AM"
+        start: "2018-09-07 10:35:00",
+        finish: "2018-09-07 11:15:00"
       },
       %{
         slug: :slot_k,
-        date: "Friday, September 7, 2018",
-        time: "11:20 AM - 12:00 PM"
+        start: "2018-09-07 11:20:00",
+        finish: "2018-09-07 12:00:00"
       },
       %{
         slug: :slot_l,
-        date: "Friday, September 7, 2018",
-        time: "12:00 PM - 1:30 PM"
+        start: "2018-09-07 12:00:00",
+        finish: "2018-09-07 13:30:00"
       },
       %{
         slug: :slot_m,
-        date: "Friday, September 7, 2018",
-        time: "1:30 PM - 2:10 PM"
+        start: "2018-09-07 13:30:00",
+        finish: "2018-09-07 14:10:00"
       },
       %{
         slug: :slot_n,
-        date: "Friday, September 7, 2018",
-        time: "2:15 PM - 2:55 PM"
+        start: "2018-09-07 14:15:00",
+        finish: "2018-09-07 14:55:00"
       },
       %{
         slug: :slot_o,
-        date: "Friday, September 7, 2018",
-        time: "2:55 PM - 3:30 PM"
+        start: "2018-09-07 14:55:00",
+        finish: "2018-09-07 15:30:00"
       },
       %{
         slug: :slot_p,
-        date: "Friday, September 7, 2018",
-        time: "3:30 PM - 4:10 PM"
+        start: "2018-09-07 15:30:00",
+        finish: "2018-09-07 16:10:00"
       },
       %{
         slug: :slot_q,
-        date: "Friday, September 7, 2018",
-        time: "4:15 PM - 4:55 PM"
+        start: "2018-09-07 16:15:00",
+        finish: "2018-09-07 16:55:00"
       },
       %{
         slug: :slot_r,
-        date: "Friday, September 7, 2018",
-        time: "4:55 PM - 5:15 PM"
+        start: "2018-09-07 16:55:00",
+        finish: "2018-09-07 17:15:00"
       },
       %{
         slug: :slot_s,
-        date: "Friday, September 7, 2018",
-        time: "5:15 PM - 5:30 PM"
+        start: "2018-09-07 17:15:00",
+        finish: "2018-09-07 17:30:00"
       },
       %{
         slug: :slot_t,
-        date: "Friday, September 7, 2018",
-        time: "5:30 PM - 6:30 PM"
+        start: "2018-09-07 17:30:00",
+        finish: "2018-09-07 18:30:00"
       }
     ]
   end

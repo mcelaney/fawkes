@@ -1,5 +1,5 @@
 <div>
-  <h3><%= @date %></h3>
+  <h3><%= display_date(@date) %></h3>
   <%=
     for slot <- @slots do
       FawkesWeb.ScheduleView.render_slot(@conn, slot)

@@ -1,0 +1,21 @@
+<%= for speaker <- @speakers do %>
+<div>
+  <%= img_tag(speaker.image) %>
+  <h4><%= link("#{speaker.first} #{speaker.last}", to: speaker_path(@conn, :show, speaker.slug)) %></h4>
+  <p><%= speaker.talk.title %></p>
+  <%= unless is_nil(speaker.github) && is_nil(speaker.twitter) && is_nil(speaker.company) do %>
+  <ul>
+    <%= unless is_nil(speaker.github) do %>
+    <li>Github: <%= link(speaker.github, to: "https://github.com/#{speaker.github}/") %></li>
+    <% end %>
+    <%= unless is_nil(speaker.twitter) do %>
+    <li>Twitter: <%= link(speaker.twitter, to: "https://twitter.com/#{speaker.twitter}/") %></li>
+    <% end %>
+    <%= unless is_nil(speaker.company) do %>
+    <li>Twitter: <%= speaker.company %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  <div><%= speaker.description %></div>
+</div>
+<% end %>
