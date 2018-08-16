@@ -3,6 +3,7 @@ defmodule Fawkes.Schedule.Category do
   import Ecto.Changeset
   alias Fawkes.Repo.Symbol, as: SymbolType
 
+  @type t :: %__MODULE__{}
 
   schema "categories" do
     field :name, :string

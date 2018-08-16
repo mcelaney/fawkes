@@ -3,6 +3,8 @@ defmodule Fawkes.Schedule.Speaker do
   import Ecto.Changeset
   alias Fawkes.Repo.Symbol, as: SymbolType
 
+  @type t :: %__MODULE__{}
+
   schema "profiles" do
     field :company, :string
     field :description, :string

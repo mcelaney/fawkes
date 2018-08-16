@@ -3,6 +3,8 @@ defmodule Fawkes.Schedule.Location do
   import Ecto.Changeset
   alias Fawkes.Repo.Symbol, as: SymbolType
 
+  @type t :: %__MODULE__{}
+
   schema "locations" do
     field :name, :string
     field :slug, SymbolType

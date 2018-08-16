@@ -2,11 +2,18 @@ defmodule Fawkes.Schedule.Slot do
   use Ecto.Schema
   import Ecto.Changeset
   alias Fawkes.Repo.Symbol, as: SymbolType
+  alias Fawkes.Schedule.Event
+  alias Fawkes.Schedule.Talk
+
+  @type t :: %__MODULE__{}
 
   schema "schedule_slots" do
     field :date, :string
     field :slug, SymbolType
     field :time, :string
+
+    has_one :event, Event
+    has_many :talks, Talk
 
     timestamps()
   end

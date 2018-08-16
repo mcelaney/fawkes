@@ -3,6 +3,7 @@ defmodule Fawkes.Schedule.Audience do
   import Ecto.Changeset
   alias Fawkes.Repo.Symbol, as: SymbolType
 
+  @type t :: %__MODULE__{}
 
   schema "audiences" do
     field :name, :string

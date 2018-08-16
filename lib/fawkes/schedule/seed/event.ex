@@ -18,73 +18,73 @@ defmodule Fawkes.Schedule.Seed.Event do
   def data(relations) do
     [
       %{
-        slug: :slot_1,
+        slug: :day_1_registration,
         name: "Registration",
         slot_id: relations[:slot_1]
       },
       %{
-        slug: :slot_2,
+        slug: :day_1_welcome,
         name: "Welcome",
         slot_id: relations[:slot_2]
       },
       %{
-        slug: :slot_4,
+        slug: :break_1,
         name: "Break",
         slot_id: relations[:slot_4]
       },
       %{
-        slug: :slot_7,
+        slug: :day_1_lunch,
         name: "Lunch",
         slot_id: relations[:slot_7]
       },
       %{
-        slug: :slot_a,
+        slug: :break_2,
         name: "Break",
         slot_id: relations[:slot_a]
       },
       %{
-        slug: :slot_d,
+        slug: :break_3,
         name: "Break",
         slot_id: relations[:slot_d]
       },
       %{
-        slug: :slot_e,
+        slug: :lightning_talks,
         name: "Lightning Talks",
         slot_id: relations[:slot_e]
       },
       %{
-        slug: :slot_f,
+        slug: :day_1_registration,
         name: "Registration",
         slot_id: relations[:slot_f]
       },
       %{
-        slug: :slot_g,
+        slug: :day_1_welcome,
         name: "Welcome",
         slot_id: relations[:slot_g]
       },
       %{
-        slug: :slot_i,
+        slug: :break_4,
         name: "Break",
         slot_id: relations[:slot_i]
       },
       %{
-        slug: :slot_l,
+        slug: :day_1_lunch,
         name: "Lunch",
         slot_id: relations[:slot_l]
       },
       %{
-        slug: :slot_o,
-        name: "Registration",
+        slug: :break_5,
+        name: "Break",
         slot_id: relations[:slot_o]
       },
       %{
-        slug: :slot_r,
-        name: "Registration",
+        slug: :break_6,
+        name: "Break",
         slot_id: relations[:slot_r]
       },
       %{
-        slug: :slot_s,
-        name: "Registration",
+        slug: :closing_remarks,
+        name: "Closing Remarks",
         slot_id: relations[:slot_s]
       }
     ]

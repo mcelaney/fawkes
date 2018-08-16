@@ -33,6 +33,9 @@ defmodule FawkesWeb.Router do
     end
 
     get "/timeline", PageController, :timeline
+    resources "/schedule", ScheduleController, only: [:index]
+    resources "/audience", AudienceController, only: [:show]
+    resources "/category", CategoryController, only: [:show]
   end
 
   # Definitely logged in scope

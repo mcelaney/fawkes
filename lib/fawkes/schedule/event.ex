@@ -4,6 +4,7 @@ defmodule Fawkes.Schedule.Event do
   alias Fawkes.Repo.Symbol, as: SymbolType
   alias Fawkes.Schedule.Slot
 
+  @type t :: %__MODULE__{}
 
   schema "events" do
     field :name, :string

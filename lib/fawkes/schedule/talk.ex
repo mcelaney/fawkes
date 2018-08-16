@@ -8,6 +8,8 @@ defmodule Fawkes.Schedule.Talk do
   alias Fawkes.Schedule.Audience
   alias Fawkes.Schedule.Location
 
+  @type t :: %__MODULE__{}
+
   schema "talks" do
     field :description, :string
     field :slug, SymbolType
