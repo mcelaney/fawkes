@@ -26,6 +26,12 @@ defmodule FawkesWeb.Router do
     plug :accepts, ["json"]
   end
 
+  # Definitely logged in scope
+  scope "/", FawkesWeb do
+    pipe_through [:browser, :auth, :ensure_auth]
+    resources "/profile", ProfileController, only: [:edit, :update], singleton: true
+  end
+
   scope "/", FawkesWeb do
     pipe_through [:browser, :auth, :ensure_profile]
     get "/", PageController, :index
@@ -42,17 +48,12 @@ defmodule FawkesWeb.Router do
     resources "/category", CategoryController, only: [:show]
     resources "/speaker", SpeakerController, only: [:index, :show]
     resources "/talk", TalkController, only: [:show]
+    resources "/profile", ProfileController, only: [:show]
   end
 
   # Definitely logged in scope
   scope "/", FawkesWeb do
     pipe_through [:browser, :auth, :ensure_auth, :ensure_profile]
     get "/secret", PageController, :secret
-  end
-
-  # Definitely logged in scope
-  scope "/", FawkesWeb do
-    pipe_through [:browser, :auth, :ensure_auth]
-    resources "/profile", ProfileController, only: [:edit, :update], singleton: true
   end
 end

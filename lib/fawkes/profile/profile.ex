@@ -24,6 +24,15 @@ defmodule Fawkes.Profile do
   end
 
   @doc """
+  Given a string or atom used as an user profile slug - returns a user profile
+  """
+  def fetch_user_profile(slug) do
+    Info
+    |> where([info], info.slug == ^slug)
+    |> Repo.one
+  end
+
+  @doc """
   Given a User - finds or created a new user profile for that user.
   """
   def fetch_or_create_for_user(%User{} = user) do

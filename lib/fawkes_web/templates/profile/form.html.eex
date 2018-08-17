@@ -27,6 +27,16 @@
 
   <div class="form-group">
     <%=
+      label(f, :image, class: "control-label") do
+        gettext("Picture")
+      end
+    %>
+    <%= file_input f, :image, class: "form-control" %>
+    <%= error_tag f, :image %>
+  </div>
+
+  <div class="form-group">
+    <%=
       label(f, :slug, class: "control-label") do
         gettext("Profile URL")
       end
@@ -34,6 +44,7 @@
     <%= text_input f, :slug, class: "form-control" %>
     <%= error_tag f, :slug %>
   </div>
+
   <div class="form-group">
     <%=
       label(f, :company, class: "control-label") do
@@ -43,6 +54,7 @@
     <%= text_input f, :company, class: "form-control" %>
     <%= error_tag f, :company %>
   </div>
+
   <div class="form-group">
     <%=
       label(f, :title, class: "control-label") do
@@ -52,6 +64,7 @@
     <%= text_input f, :title, class: "form-control" %>
     <%= error_tag f, :title %>
   </div>
+
   <div class="form-group">
     <%=
       label(f, :github, class: "control-label") do
@@ -61,6 +74,7 @@
     <%= text_input f, :github, class: "form-control" %>
     <%= error_tag f, :github %>
   </div>
+
   <div class="form-group">
     <%=
       label(f, :twitter, class: "control-label") do

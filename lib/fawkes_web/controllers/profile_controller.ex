@@ -4,6 +4,10 @@ defmodule FawkesWeb.ProfileController do
   alias Fawkes.Profile
   alias Fawkes.Auth.Guardian.Plug, as: GuardianPlug
 
+  def show(conn, %{"id" => slug}) do
+    render(conn, "show.html", user: Profile.fetch_user_profile(slug))
+  end
+
   def edit(conn, _params) do
     render(conn, "edit.html", changeset: current_profile_changeset(conn))
   end

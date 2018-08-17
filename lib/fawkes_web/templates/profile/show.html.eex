@@ -1,0 +1,16 @@
+<div>
+  <%= {@user.image, @user} |> Fawkes.ImageUploader.url() |> img_tag() %>
+  <h4><%= link("#{@user.first} #{@user.last}", to: speaker_path(@conn, :show, @user.slug)) %></h4>
+  <ul>
+    <%= unless is_nil(@user.github) do %>
+    <li>Github: <%= link(@user.github, to: "https://github.com/#{@user.github}/") %></li>
+    <% end %>
+    <%= unless is_nil(@user.twitter) do %>
+    <li>Twitter: <%= link(@user.twitter, to: "https://twitter.com/#{@user.twitter}/") %></li>
+    <% end %>
+    <%= unless is_nil(@user.company) do %>
+    <li>Twitter: <%= @user.company %></li>
+    <% end %>
+  </ul>
+  <div><%= @user.description %></div>
+</div>

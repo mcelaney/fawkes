@@ -2,6 +2,7 @@ defmodule Fawkes.Profile.Info do
   @moduledoc false
 
   use Ecto.Schema
+  use Arc.Ecto.Schema
   import Ecto.Changeset
   alias Fawkes.Repo.Symbol, as: SymbolType
 
@@ -12,7 +13,7 @@ defmodule Fawkes.Profile.Info do
     field :description, :string
     field :first, :string
     field :github, :string
-    field :image, :string
+    field :image, Fawkes.ImageUploader.Type
     field :last, :string
     field :slug, SymbolType
     field :twitter, :string
@@ -35,8 +36,8 @@ defmodule Fawkes.Profile.Info do
   @doc false
   def changeset(info, attrs) do
     info
-    |> cast(attrs, [:first, :last, :slug, :company, :title, :github, :twitter, :description])
-    |> IO.inspect
+    |> cast(attrs, [:first, :last, :slug, :company, :title, :github, :twitter, :description, :image])
+    |> cast_attachments(attrs, [:image])
     |> validate_required([:first, :last])
     |> validate_exclusion(:slug, [:edit, :new])
     |> unique_constraint(:slug)

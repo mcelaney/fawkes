@@ -53,7 +53,7 @@ defmodule Fawkes.ScheduleTest do
 
       jose = %{
         slug: :jose_valim,
-        image: "images/jose-valim.jpg",
+        image: image_info("jose-valim.jpg"),
         first: "José",
         last: "Valim",
         company: "Plataformatec",
@@ -63,7 +63,7 @@ defmodule Fawkes.ScheduleTest do
       }
       lance = %{
         slug: :lance_halvorsen,
-        image: "images/lance-halvorsen.jpg",
+        image: image_info("lance-halvorsen.jpg"),
         first: "Lance",
         last: "Halvorsen",
         company: "LeTote",
@@ -73,7 +73,7 @@ defmodule Fawkes.ScheduleTest do
       }
       anna = %{
         slug: :anna_neyzberg,
-        image: "images/anna-neyzberg.jpg",
+        image: image_info("anna-neyzberg.jpg"),
         first: "Anna ",
         last: "Neyzberg",
         company: "Carbon Five",
@@ -227,5 +227,9 @@ defmodule Fawkes.ScheduleTest do
       result = Schedule.fetch_talks("slot_5_lance_halvorsen")
       assert result.id == talk_2.id
     end
+  end
+
+  defp image_info(filename) do
+    %Plug.Upload{content_type: "image/jpeg", filename: filename, path: Path.join(:code.priv_dir(:fawkes), "/static/images/" <> filename)}
   end
 end
