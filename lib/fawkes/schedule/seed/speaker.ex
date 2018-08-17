@@ -54,7 +54,7 @@ defmodule Fawkes.Schedule.Seed.Speaker do
       },
       %{
         slug: :bailey_miller,
-        image: image_info("bailey-miller"),
+        image: image_info("bailey-miller.jpg"),
         first: "Bailey",
         last: "Miller",
         company: "Gaslight",
@@ -394,6 +394,6 @@ defmodule Fawkes.Schedule.Seed.Speaker do
   end
 
   defp image_info(filename) do
-    %Plug.Upload{content_type: "image/jpeg", filename: filename, path: Path.join(:code.priv_dir(:fawkes), "/static/images/" <> filename)}
+    %Plug.Upload{content_type: "image/jpeg", filename: filename, path: Path.join(:code.priv_dir(:fawkes), "/repo/seed_images/" <> filename)}
   end
 end

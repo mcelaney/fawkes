@@ -53,12 +53,12 @@ defmodule Fawkes.Schedule.Seed.Event do
         slot_id: relations[:slot_e]
       },
       %{
-        slug: :day_1_registration,
+        slug: :day_2_registration,
         name: "Registration",
         slot_id: relations[:slot_f]
       },
       %{
-        slug: :day_1_welcome,
+        slug: :day_2_welcome,
         name: "Welcome",
         slot_id: relations[:slot_g]
       },
@@ -68,7 +68,7 @@ defmodule Fawkes.Schedule.Seed.Event do
         slot_id: relations[:slot_i]
       },
       %{
-        slug: :day_1_lunch,
+        slug: :day_2_lunch,
         name: "Lunch",
         slot_id: relations[:slot_l]
       },

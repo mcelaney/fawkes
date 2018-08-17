@@ -46,8 +46,14 @@ defmodule Fawkes.Mixfile do
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
       {:timex, "~> 3.3"},
+
       {:arc, "~> 0.10"},
-      {:arc_ecto, "~> 0.10"}
+      {:arc_ecto, "~> 0.10"},
+      {:ex_aws, "~> 2.0"},
+      {:ex_aws_s3, "~> 2.0"},
+      {:poison, "~> 3.0"},
+      {:hackney, "~> 1.9"},
+      {:sweet_xml, "~> 0.6"}
     ]
   end
 
