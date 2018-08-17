@@ -1,4 +1,8 @@
 defmodule Fawkes.Schedule do
+  @moduledoc """
+  Module responsible for teh schedule domain
+  """
+
   import Ecto.Query
   alias Fawkes.Repo
   alias Fawkes.Schedule.Slot
@@ -66,7 +70,8 @@ defmodule Fawkes.Schedule do
   """
   def fetch_speakers do
     Speaker
-    |> preload([speaker], [:talk])
+    |> join(:right, [speaker], talk in assoc(speaker, :talk))
+    |> preload([:talk])
     |> order_by([speaker], speaker.last)
     |> Repo.all
   end
@@ -76,6 +81,7 @@ defmodule Fawkes.Schedule do
   """
   def fetch_speakers(slug) do
     Speaker
+    |> join(:right, [speaker], talk in assoc(speaker, :talk))
     |> where([speaker], speaker.slug == ^slug)
     |> preload([:talk])
     |> Repo.one

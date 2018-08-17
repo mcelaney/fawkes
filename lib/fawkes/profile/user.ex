@@ -8,6 +8,8 @@ defmodule Fawkes.Profile.User do
   schema "users" do
     field :username, :string
 
+    has_one :profile, Fawkes.Profile.Info
+
     timestamps()
   end
 end

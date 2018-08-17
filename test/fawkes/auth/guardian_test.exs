@@ -34,7 +34,7 @@ defmodule Fawkes.Auth.GuardianTest do
     test "resource_from_claims/1 handles a missing user", %{user: user} do
       result = Guardian.resource_from_claims(%{"sub" => user.id + 1})
 
-      assert result == {:error, :not_found}
+      assert result == {:error, :resource_not_found}
     end
   end
 end

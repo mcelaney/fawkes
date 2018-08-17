@@ -1,13 +1,11 @@
 defmodule FawkesWeb.PageController do
   use FawkesWeb, :controller
   alias Fawkes.Auth
-  alias Fawkes.Auth.User
   alias Fawkes.Auth.Guardian
   alias Guardian.Plug, as: GuardianPlug
 
   def index(conn, _params) do
-    render(conn, "index.html", changeset: Auth.change_user(%User{}),
-                               action: page_path(conn, :login))
+    render(conn, "index.html")
   end
 
   def login(conn, %{"user" => %{"username" => username, "password" => pass}}) do

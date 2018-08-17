@@ -28,6 +28,9 @@ defmodule Fawkes.Auth.Guardian do
   Given a Guardian claim map returns a User Profile.
   """
   def resource_from_claims(claims, get_user \\ &Profile.get_user/1) do
-    get_user.(claims["sub"])
+    case get_user.(claims["sub"]) do
+      nil -> {:error, :resource_not_found}
+      user -> {:ok, user}
+    end
   end
 end

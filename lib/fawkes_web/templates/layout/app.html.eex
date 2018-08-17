@@ -15,17 +15,64 @@
     <div class="container">
       <header class="header">
         <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li>
-              <%= if is_nil @conn.assigns[:current_user] do %>
+          <%= unless is_nil display_name(@conn.assigns[:current_user]) do %>
+            <dl>
+              <dt><%= display_name(@conn.assigns[:current_user]) %></dt>
+              <%= if display_title(@conn.assigns[:current_user]) do %>
+                <dd><%= display_title(@conn.assigns[:current_user]) %></dd>
+              <% end %>
+              <%= if display_company(@conn.assigns[:current_user]) do %>
+                <dd><%= display_company(@conn.assigns[:current_user]) %></dd>
+              <% end %>
+            </dl>
+          <% end %>
+          <ul>
+            <%= if is_nil @conn.assigns[:current_user] do %>
+              <li>
                 <%= link  gettext("Get Started"), to: signup_user_path(@conn, :new) %>
+              </li>
+              <li>
+                <%= link gettext("Schedule"), to: schedule_path(@conn, :index) %>
+              </li>
+            <% else %>
+              <li>
+                <%= link gettext("Agenda"), to: schedule_path(@conn, :index) %>
+              </li>
+            <% end %>
+            <li>
+              <%= if is_nil @conn.assigns[:current_user] || @conn.assigns[:ignore_login] != true do %>
+                <%= form_for user_auth_changeset(), page_path(@conn, :login), fn f -> %>
+                  <div class="form-group">
+                    <%=
+                      label(f, :username, class: "control-label") do
+                        gettext("Username")
+                      end
+                    %>
+                    <%= text_input f, :username, class: "form-control" %>
+                    <%= error_tag f, :username %>
+                  </div>
+                  <div class="form-group">
+                    <%=
+                      label(f, :password, class: "control-label") do
+                        gettext("Password")
+                      end
+                    %>
+                    <%= password_input f, :password, class: "form-control" %>
+                    <%= error_tag f, :password %>
+                  </div>
+                  <div class="form-group">
+                    <%= submit gettext("Submit"), class: "btn btn-primary" %>
+                  </div>
+                <% end %>
               <% else %>
                 <%= link gettext("Logout"), to: page_path(@conn, :logout), method: :post%>
               <% end %>
             </li>
+            <li>
+              <%= link("General Info", to: page_path(@conn, :index)) %>
+            </li>
           </ul>
         </nav>
-        <span class="logo"></span>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

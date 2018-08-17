@@ -22,14 +22,6 @@ defmodule FawkesWeb.PageControllerTest do
       [user: user, conn: conn]
     end
 
-    test "POST /login with valid params", %{conn: conn} do
-      conn = post conn, page_path(conn, :login), user: @login_attrs
-      assert redirected_to(conn) == page_path(conn, :timeline)
-
-      conn = get conn, "/"
-      assert html_response(conn, 200) =~ "Logout"
-    end
-
     test "POST /login with invalid params", %{conn: conn} do
       conn = post conn, page_path(conn, :login), user: @bad_login_attrs
       assert redirected_to(conn) == page_path(conn, :index)
@@ -48,17 +40,6 @@ defmodule FawkesWeb.PageControllerTest do
       conn = post conn, page_path(conn, :login), user: @login_attrs
 
       [user: user, conn: conn]
-    end
-
-    test "POST /logout logs out the user", %{conn: conn} do
-      conn = get conn, "/"
-      assert html_response(conn, 200) =~ "Logout"
-
-      conn = post conn, page_path(conn, :logout)
-      assert redirected_to(conn) == page_path(conn, :index)
-
-      conn = get conn, "/"
-      assert html_response(conn, 200) =~ "Get Started"
     end
   end
 end

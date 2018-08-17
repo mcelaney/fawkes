@@ -18,12 +18,16 @@ defmodule FawkesWeb.Router do
     plug Guardian.Plug.EnsureAuthenticated
   end
 
+  pipeline :ensure_profile do
+    plug FawkesWeb.Plugs.VerifyProfileCreated
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
 
   scope "/", FawkesWeb do
-    pipe_through [:browser, :auth]
+    pipe_through [:browser, :auth, :ensure_profile]
     get "/", PageController, :index
     post "/", PageController, :login
     post "/logout", PageController, :logout
@@ -42,7 +46,13 @@ defmodule FawkesWeb.Router do
 
   # Definitely logged in scope
   scope "/", FawkesWeb do
-    pipe_through [:browser, :auth, :ensure_auth]
+    pipe_through [:browser, :auth, :ensure_auth, :ensure_profile]
     get "/secret", PageController, :secret
+  end
+
+  # Definitely logged in scope
+  scope "/", FawkesWeb do
+    pipe_through [:browser, :auth, :ensure_auth]
+    resources "/profile", ProfileController, only: [:edit, :update], singleton: true
   end
 end

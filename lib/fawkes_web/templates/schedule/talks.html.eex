@@ -1,5 +1,4 @@
 <h4><%= display_time(@slot) %></h4>
-<%= IO.inspect @slot.start %>
 <%= for talk <- @slot.talks do %>
 <div>
   <h4><%= link(talk.title, to: talk_path(@conn, :show, talk.slug)) %></h4>

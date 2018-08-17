@@ -13,6 +13,7 @@ defmodule FawkesWeb.Signup.UserController do
          true -> conn
          _ -> GuardianPlug.sign_out(conn)
        end
+    |> Plug.Conn.assign(:ignore_login, true)
     |> render("new.html", changeset: Signup.change_user(%User{}),
                           maybe_user: nil)
   end

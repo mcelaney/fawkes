@@ -18,7 +18,7 @@ defmodule Fawkes.ProfileTest do
     end
 
     test "get_user/1 fetches an existing user", %{user: user} do
-      {:ok, result} = Profile.get_user(user.id)
+      result = Profile.get_user(user.id)
 
       assert result.id == user.id
       assert %User{} = result
@@ -27,7 +27,7 @@ defmodule Fawkes.ProfileTest do
     test "get_user/1 returns an error tuple", %{user: user} do
       result = Profile.get_user(user.id + 1)
 
-      assert result == {:error, :not_found}
+      assert result == nil
     end
   end
 end
