@@ -1,7 +1,6 @@
 defmodule FawkesWeb.AgendaItemController do
   use FawkesWeb, :controller
   alias Fawkes.Profile
-  alias Fawkes.Profile.User
   alias Fawkes.Schedule
 
   def index(conn, _params) do

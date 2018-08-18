@@ -33,6 +33,12 @@ defmodule FawkesWeb do
       defp group_schedule_by_dates(slots) do
         Enum.group_by(slots, fn(slot) -> slot.start |> NaiveDateTime.to_date() end)
       end
+
+      defp talk_counts(schedule) do
+        schedule
+        |> Fawkes.Schedule.to_talk_ids()
+        |> Fawkes.Profile.fetch_attendance_counts()
+      end
     end
   end
 

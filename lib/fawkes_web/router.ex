@@ -43,7 +43,7 @@ defmodule FawkesWeb.Router do
     end
 
     get "/timeline", PageController, :timeline
-    resources "/schedule", ScheduleController, only: [:index]
+    resources "/schedule", ScheduleController, only: [:index, :show]
     resources "/audience", AudienceController, only: [:show]
     resources "/category", CategoryController, only: [:show]
     resources "/speaker", SpeakerController, only: [:index, :show]

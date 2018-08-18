@@ -13,12 +13,10 @@ defmodule FawkesWeb.ScheduleController do
   end
 
   def show(conn, %{"id" => slug}) do
-    render(conn, TalkView, "index.html", talks: nil)
-  end
+    schedule = slug |> Schedule.fetch() |> List.wrap() |> IO.inspect
 
-  defp talk_counts(schedule) do
-    schedule
-    |> Schedule.to_talk_ids()
-    |> Profile.fetch_attendance_counts()
+    render(conn, "index.html", schedules: group_schedule_by_dates(schedule),
+                               talk_counts: talk_counts(schedule),
+                               agenda_item_slugs: talk_slug_mapset(conn))
   end
 end
