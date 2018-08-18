@@ -9,6 +9,19 @@ defmodule FawkesWeb.Plugs.CurrentUser do
   def init(opts), do: opts
 
   def call(conn, _opts) do
-    Conn.assign(conn, :current_user, GuardianPlug.current_resource(conn))
+    conn
+    |> GuardianPlug.current_resource()
+    |> assign_current_user_values(conn)
   end
+
+  defp assign_current_user_values(user, conn) do
+    conn
+    |> Conn.assign(:current_user, user)
+    |> Conn.assign(:current_agenda_items, agenda_items(user))
+  end
+
+  defp agenda_items(%{profile: %{agenda_items: items}}) do
+    Enum.map(items, fn(%{talk: talk}) -> talk end)
+  end
+  defp agenda_items(_), do: []
 end

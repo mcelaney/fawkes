@@ -1,0 +1,4 @@
+<div>
+  <h4 itemscope itemtype="http://schema.org/Event"><%= SharedView.render_timespan(@slot) %></h4>
+  <p>No talks have been picked in this hour: select a talk to attend.
+<div>

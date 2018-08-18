@@ -23,6 +23,16 @@ defmodule FawkesWeb do
       import Plug.Conn
       import FawkesWeb.Router.Helpers
       import FawkesWeb.Gettext
+
+      defp talk_slug_mapset(conn) do
+        conn.assigns.current_agenda_items
+        |> Enum.map(fn(%{slug: slug}) -> slug end)
+        |> MapSet.new()
+      end
+
+      defp group_schedule_by_dates(slots) do
+        Enum.group_by(slots, fn(slot) -> slot.start |> NaiveDateTime.to_date() end)
+      end
     end
   end
 
@@ -40,16 +50,7 @@ defmodule FawkesWeb do
       import FawkesWeb.Router.Helpers
       import FawkesWeb.ErrorHelpers
       import FawkesWeb.Gettext
-
-
-
-      def display_time(%{start: start, finish: finish}) do
-        display_time(start) <> " - " <> display_time(finish)
-      end
-      def display_time(time), do: Timex.format!(time, "%l:%M %P", :strftime)
-
-      def display_date(%{start: start}), do: display_date(start)
-      def display_date(date), do: Timex.format!(date, "%A %B %e, %Y", :strftime)
+      alias FawkesWeb.SharedView
     end
   end
 

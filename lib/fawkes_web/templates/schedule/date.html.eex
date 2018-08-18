@@ -1,8 +1,13 @@
 <div>
-  <h3><%= display_date(@date) %></h3>
+  <%= for slot <- @slots do %>
+  <h2><%= SharedView.render_timespan(slot) %></h2>
   <%=
-    for slot <- @slots do
-      FawkesWeb.ScheduleView.render_slot(@conn, slot)
-    end
+    render_slot(slot, [
+      slot: slot,
+      conn: @conn,
+      talk_counts: @talk_counts,
+      agenda_item_slugs: @agenda_item_slugs
+    ])
   %>
+  <% end %>
 </div>

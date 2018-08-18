@@ -54,6 +54,6 @@ defmodule FawkesWeb.Router do
   # Definitely logged in scope
   scope "/", FawkesWeb do
     pipe_through [:browser, :auth, :ensure_auth, :ensure_profile]
-    get "/secret", PageController, :secret
+    resources "/my_agenda", AgendaItemController, only: [:index, :create, :delete]
   end
 end

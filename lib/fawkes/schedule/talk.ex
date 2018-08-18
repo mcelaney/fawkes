@@ -14,6 +14,7 @@ defmodule Fawkes.Schedule.Talk do
     field :description, :string
     field :slug, SymbolType
     field :title, :string
+    field :selected?, :boolean, default: false, virtual: true
 
     belongs_to :slot, Slot
     belongs_to :speaker, Speaker

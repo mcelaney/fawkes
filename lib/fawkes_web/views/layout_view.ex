@@ -1,7 +1,5 @@
 defmodule FawkesWeb.LayoutView do
   use FawkesWeb, :view
-  alias Fawkes.Auth.User
-  alias Fawkes.Auth
 
   def display_name(%{profile: profile}) when not is_nil profile do
     "#{profile.first} #{profile.last}"
@@ -17,8 +15,4 @@ defmodule FawkesWeb.LayoutView do
     company
   end
   def display_company(_), do: nil
-
-  def user_auth_changeset do
-    Auth.change_user(%User{})
-  end
 end

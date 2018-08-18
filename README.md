@@ -27,3 +27,21 @@ mix phx.gen.schema Schedule.Event events slug:string:unique name:string slot_id:
 
 
 Fawkes.Schedule.Slot |> Fawkes.Repo.all |> Enum.each(fn(slot) -> Fawkes.Repo.delete(slot) end)
+
+
+
+{
+  "Version": "2012–10–17",
+  "Id": "Policy1380877762691",
+  "Statement": [
+    {
+      "Sid": "Stmt1380877761162",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::fawkesapp/*"
+    }
+  ]
+}

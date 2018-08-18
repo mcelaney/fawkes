@@ -40,7 +40,7 @@ defmodule Fawkes.Schedule.Seed.Talk do
         title: "Elixir at a Walking Pace",
         slot_id: relations[:slots][:slot_5],
         speaker_id: relations[:speakers][:lance_halvorsen],
-        category_id: relations[:categories][:phoenix_production],
+        category_id: relations[:categories][:production],
         audience_id: relations[:audiences][:intermediate],
         location_id: relations[:locations][:grand_ballroom],
         description: "<p>Many of us are initially attracted to Elixir because of its performance and fault tolerance. Make no mistake, these are stellar, but there are times when they are not the most critical requirements for our applications.</p>\n

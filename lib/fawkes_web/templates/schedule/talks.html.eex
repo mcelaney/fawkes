@@ -1,12 +1,33 @@
-<h4><%= display_time(@slot) %></h4>
-<%= for talk <- @slot.talks do %>
-<div>
-  <h4><%= link(talk.title, to: talk_path(@conn, :show, talk.slug)) %></h4>
-  <h5><%= link("#{talk.speaker.first} #{talk.speaker.last}", to: speaker_path(@conn, :show, talk.speaker.slug)) %></h5>
-  <p>Located in: <%= talk.location.name %></p>
-  <ul>
-    <li><%= link(talk.category.name, to: category_path(@conn, :show, talk.category.slug)) %></li>
-    <li><%= link(talk.audience.name, to: audience_path(@conn, :show, talk.audience.slug)) %></li>
-  </ul>
-</div>
-<% end %>
+<section>
+  <%= for talk <- @slot.talks do %>
+  <section>
+    <h3><%= link(talk.title, to: talk_path(@conn, :show, talk.slug)) %></h3>
+    <div><%= SharedView.render_timespan(@slot) %></div>
+    <div>
+      <span><%= link("#{talk.speaker.first} #{talk.speaker.last}", to: speaker_path(@conn, :show, talk.speaker.slug)) %> |
+      <span><%= talk.location.name %></span>
+    </div>
+    <ul>
+      <li class="<%= talk.audience.slug %>"><%= link(talk.audience.name, to: audience_path(@conn, :show, talk.audience.slug)) %></li>
+      <li class="<%= talk.category.slug %>"><%= link(talk.category.name, to: category_path(@conn, :show, talk.category.slug)) %></li>
+    </ul>
+    <div>
+      <%= if talk.selected? || MapSet.member?(@agenda_item_slugs, talk.slug) do %>
+        <%= link "Remove from agenda", to: agenda_item_path(@conn, :delete, talk.id), method: :delete, data: [confirm: "Are you sure?"] %>
+      <% else %>
+      <span>
+        <%= form_for agenda_item_changeset(), agenda_item_path(@conn, :create), fn f -> %>
+          <div class="form-group">
+            <%= hidden_input(f, :talk_id, value: talk.id) %>
+            <%= submit gettext("Add to Agenda"), class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </span>
+      <% end %>
+    </div>
+    <div>
+      <p>Number Attending: <%= @talk_counts[talk.slug] || 0 %></p>
+    </div>
+  </section>
+  <% end %>
+</section>

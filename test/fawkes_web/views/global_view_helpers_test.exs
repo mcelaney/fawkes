@@ -14,12 +14,4 @@ defmodule FawkesWeb.GlobalViewHelpersTest do
   test "formats time" do
     assert FawkesWeb.TestView.display_time(~N[2018-09-06 15:45:00.000000]) == " 3:45 pm"
   end
-
-  test "formats dates" do
-    assert FawkesWeb.TestView.display_date(~N[2018-09-06 15:45:00.000000]) ==
-           "Thursday September  6, 2018"
-
-    assert FawkesWeb.TestView.display_date(%{start: ~N[2018-09-06 15:45:00.000000]}) ==
-           "Thursday September  6, 2018"
-  end
 end

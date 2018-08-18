@@ -40,30 +40,8 @@
               </li>
             <% end %>
             <li>
-              <%= if is_nil @conn.assigns[:current_user] || @conn.assigns[:ignore_login] != true do %>
-                <%= form_for user_auth_changeset(), page_path(@conn, :login), fn f -> %>
-                  <div class="form-group">
-                    <%=
-                      label(f, :username, class: "control-label") do
-                        gettext("Username")
-                      end
-                    %>
-                    <%= text_input f, :username, class: "form-control" %>
-                    <%= error_tag f, :username %>
-                  </div>
-                  <div class="form-group">
-                    <%=
-                      label(f, :password, class: "control-label") do
-                        gettext("Password")
-                      end
-                    %>
-                    <%= password_input f, :password, class: "form-control" %>
-                    <%= error_tag f, :password %>
-                  </div>
-                  <div class="form-group">
-                    <%= submit gettext("Submit"), class: "btn btn-primary" %>
-                  </div>
-                <% end %>
+              <%= if is_nil @conn.assigns[:current_user] && @conn.assigns[:ignore_login] != true do %>
+                <%= SharedView.render("login.html", conn: @conn) %>
               <% else %>
                 <%= link gettext("Logout"), to: page_path(@conn, :logout), method: :post%>
               <% end %>

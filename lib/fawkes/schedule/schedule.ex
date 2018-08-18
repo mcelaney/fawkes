@@ -1,6 +1,6 @@
 defmodule Fawkes.Schedule do
   @moduledoc """
-  Module responsible for teh schedule domain
+  Module responsible for the schedule domain
   """
 
   import Ecto.Query
@@ -20,6 +20,8 @@ defmodule Fawkes.Schedule do
   @spec fetch_speakers() :: list(Speaker.t)
   @spec fetch_speakers(slugable) :: Speaker.t
   @spec fetch_talks(slugable) :: Talk.t
+  @spec single_talk_slot_talk_ids() :: list(pos_integer)
+  @spec to_talk_ids(list(Slot.t)) :: list(pos_integer)
 
   defdelegate seed(), to: Fawkes.Schedule.Seed, as: :perform
 
@@ -31,6 +33,17 @@ defmodule Fawkes.Schedule do
     |> preload([:event, [talks: [:speaker, :category, :audience, :location]]])
     |> order_by([slot], slot.start)
     |> Repo.all
+  end
+
+  def fetch(talk_ids) when is_list(talk_ids) do
+    __MODULE__.Agenda.fetch(talk_ids)
+  end
+
+  def fetch(slug) do
+    Slot
+    |> where([slot], slot.slug == ^slug)
+    |> preload([talks: [:speaker, :category, :audience, :location]])
+    |> Repo.one
   end
 
   @doc """
@@ -95,5 +108,34 @@ defmodule Fawkes.Schedule do
     |> where([talk], talk.slug == ^slug)
     |> preload([:slot, :speaker, :category, :audience, :location])
     |> Repo.one
+  end
+
+  @doc """
+  Returns a list of ids from all talks which are the only talk in their schedule
+  slot
+  """
+  def single_talk_slot_talk_ids do
+    Talk
+    |> where([talk], fragment("? in (SELECT slot_id
+                                     FROM talks
+                                     GROUP BY slot_id
+                                     HAVING count(slot_id) = 1)",
+                              talk.slot_id))
+    |> select([talk], talk.id)
+    |> Repo.all
+  end
+
+  @doc """
+  Given a list of schedule slots returns a list of all talk_ids contained in
+  those slots.
+  """
+  def to_talk_ids(slots) do
+    Enum.reduce(slots, [], fn(slot, acc) ->
+      slot.talks
+      |> Enum.reduce([], fn(talk, acc) ->
+           [talk.id|acc]
+         end)
+      |> Kernel.++(acc)
+    end)
   end
 end

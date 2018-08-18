@@ -20,6 +20,7 @@ defmodule Fawkes.Profile.Info do
     field :title, :string
 
     belongs_to :user, Fawkes.Profile.User
+    has_many :agenda_items, Fawkes.Profile.AgendaItem, foreign_key: :profile_id
 
     timestamps()
   end

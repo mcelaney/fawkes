@@ -6,8 +6,7 @@ defmodule FawkesWeb.Signup.UserController do
   alias Fawkes.Auth.Guardian.Plug, as: GuardianPlug
 
   def new(conn, _params) do
-    conn
-    |> GuardianPlug.current_resource()
+    conn.assigns.current_user
     |> is_nil()
     |> case do
          true -> conn
