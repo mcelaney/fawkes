@@ -12,7 +12,6 @@ config :fawkes,
 # Configures the endpoint
 config :fawkes, FawkesWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "WC0qCl+1UbVYfCivgI23gKrHGEBy/i08b4uzifPAO/cPIlPv7O0szgqAuMCaAeoI",
   render_errors: [view: FawkesWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Fawkes.PubSub,
            adapter: Phoenix.PubSub.PG2]

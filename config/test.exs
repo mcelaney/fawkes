@@ -4,7 +4,8 @@ use Mix.Config
 # you can enable the server option below.
 config :fawkes, FawkesWeb.Endpoint,
   http: [port: 4001],
-  server: false
+  server: false,
+  secret_key_base: "WC0qCl+1UbVYfCivgI23gKrHGEBy/i08b4uzifPAO/cPIlPv7O0szgqAuMCaAeoI"
 
 # Print only warnings and errors during test
 config :logger, level: :warn

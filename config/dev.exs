@@ -9,6 +9,7 @@ use Mix.Config
 config :fawkes, FawkesWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
+  secret_key_base: "WC0qCl+1UbVYfCivgI23gKrHGEBy/i08b4uzifPAO/cPIlPv7O0szgqAuMCaAeoI",
   code_reloader: true,
   check_origin: false,
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
