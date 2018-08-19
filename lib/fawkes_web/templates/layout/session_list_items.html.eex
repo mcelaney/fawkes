@@ -1,0 +1,7 @@
+<li>
+  <%= if is_nil @conn.assigns[:current_user] && @conn.assigns[:ignore_login] != true do %>
+    <%= SharedView.render("login.html", conn: @conn) %>
+  <% else %>
+    <%= link gettext("Logout"), to: page_path(@conn, :logout), method: :post%>
+  <% end %>
+</li>

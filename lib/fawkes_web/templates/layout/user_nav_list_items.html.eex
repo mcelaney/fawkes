@@ -1,0 +1,7 @@
+<%= if is_nil @conn.assigns[:current_user] do %>
+  <li><%= link gettext("Get Started"), to: signup_user_path(@conn, :new) %></li>
+  <li><%= link gettext("Schedule"), to: schedule_path(@conn, :index) %></li>
+<% else %>
+  <li><%= link gettext("Agenda"), to: agenda_item_path(@conn, :index) %></li>
+  <li><%= link gettext("Attendees"), to: profile_path(@conn, :index) %></li>
+<% end %>

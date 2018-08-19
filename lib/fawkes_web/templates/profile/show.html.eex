@@ -1,17 +1,9 @@
 <div>
   <%= {@user.image, @user} |> Fawkes.ImageUploader.url() |> img_tag() %>
   <h4><%= "#{@user.first} #{@user.last}" %></h4>
-  <ul>
-    <%= unless is_nil(@user.github) do %>
-    <li>Github: <%= link(@user.github, to: "https://github.com/#{@user.github}/") %></li>
-    <% end %>
-    <%= unless is_nil(@user.twitter) do %>
-    <li>Twitter: <%= link(@user.twitter, to: "https://twitter.com/#{@user.twitter}/") %></li>
-    <% end %>
-    <%= unless @user.title |> employment(@user.company) |> is_nil do %>
-    <li><%= employment(@user.title, @user.company) %></li>
-    <% end %>
-  </ul>
+
+  <%= render(FawkesWeb.ScheduleView, "profile_meta.html", user: @user) %>
+
   <div><%= @user.description %></div>
 
   <h5>Selected Talks</h5>

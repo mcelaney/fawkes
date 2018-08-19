@@ -2,17 +2,8 @@
   <%= {@speaker.image, @speaker} |> Fawkes.ImageUploader.url() |> img_tag() %>
   <h4><%= link("#{@speaker.first} #{@speaker.last}", to: speaker_path(@conn, :show, @speaker.slug)) %></h4>
   <p><%= @speaker.talk.title %></p>
-  <ul>
-    <li>Talk: <%= link(@speaker.talk.title, to: talk_path(@conn, :show, @speaker.talk.slug)) %>
-    <%= unless is_nil(@speaker.github) do %>
-    <li>Github: <%= link(@speaker.github, to: "https://github.com/#{@speaker.github}/") %></li>
-    <% end %>
-    <%= unless is_nil(@speaker.twitter) do %>
-    <li>Twitter: <%= link(@speaker.twitter, to: "https://twitter.com/#{@speaker.twitter}/") %></li>
-    <% end %>
-    <%= unless is_nil(@speaker.company) do %>
-    <li>Twitter: <%= @speaker.company %></li>
-    <% end %>
-  </ul>
+
+  <%= render(FawkesWeb.ScheduleView, "profile_meta.html", user: @speaker) %>
+
   <div><%= @speaker.description %></div>
 </div>

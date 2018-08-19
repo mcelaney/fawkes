@@ -42,7 +42,6 @@ defmodule FawkesWeb.Router do
       resources("/users", UserController, only: [:new, :create])
     end
 
-    get("/timeline", PageController, :timeline)
     resources("/schedule", ScheduleController, only: [:index, :show])
     resources("/audience", AudienceController, only: [:show])
     resources("/category", CategoryController, only: [:show])

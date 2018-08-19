@@ -27,12 +27,4 @@ defmodule FawkesWeb.PageController do
     |> GuardianPlug.sign_out()
     |> redirect(to: page_path(conn, :index))
   end
-
-  def secret(conn, _params) do
-    render(conn, "secret.html")
-  end
-
-  def timeline(conn, _params) do
-    render(conn, "timeline.html")
-  end
 end
