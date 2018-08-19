@@ -1,4 +1,6 @@
 defmodule Fawkes.Schedule.Seed do
+  @moduledoc false
+
   alias Fawkes.Schedule.Seed.Audience
   alias Fawkes.Schedule.Seed.Category
   alias Fawkes.Schedule.Seed.Event

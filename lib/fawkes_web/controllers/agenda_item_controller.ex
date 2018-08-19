@@ -1,7 +1,5 @@
 defmodule FawkesWeb.AgendaItemController do
   use FawkesWeb, :controller
-  alias Fawkes.Profile
-  alias Fawkes.Schedule
 
   def index(conn, _params) do
     talk_ids = conn |> agenda_talk_ids()

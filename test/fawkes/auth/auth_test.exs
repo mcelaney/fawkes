@@ -2,8 +2,8 @@ defmodule Fawkes.AuthTest do
   use Fawkes.DataCase
 
   alias Fawkes.Auth
-  alias Fawkes.Signup
   alias Fawkes.Auth.User
+  alias Fawkes.Signup
 
   @valid_username "Mac"
   @invalid_username "NotMac"

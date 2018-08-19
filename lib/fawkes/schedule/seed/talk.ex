@@ -1,12 +1,14 @@
 defmodule Fawkes.Schedule.Seed.Talk do
+  @moduledoc false
+
   import Ecto.Query
-  alias Fawkes.Schedule.Talk
+  alias Fawkes.Repo
   alias Fawkes.Schedule.Audience
   alias Fawkes.Schedule.Category
   alias Fawkes.Schedule.Location
   alias Fawkes.Schedule.Slot
   alias Fawkes.Schedule.Speaker
-  alias Fawkes.Repo
+  alias Fawkes.Schedule.Talk
 
   def perform do
     %{}

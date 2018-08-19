@@ -4,9 +4,9 @@ defmodule Fawkes.Auth.Guardian do
   """
 
   use Guardian, otp_app: :fawkes
+  alias Fawkes.Auth.User, as: AuthUser
   alias Fawkes.Profile
   alias Fawkes.Profile.User, as: ProfileUser
-  alias Fawkes.Auth.User, as: AuthUser
   alias Fawkes.Signup.User, as: SignupUser
 
   @type get_user_func :: (String.t -> boolean)

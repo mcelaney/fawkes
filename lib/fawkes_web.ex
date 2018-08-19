@@ -23,6 +23,8 @@ defmodule FawkesWeb do
       import Plug.Conn
       import FawkesWeb.Router.Helpers
       import FawkesWeb.Gettext
+      alias Fawkes.Profile
+      alias Fawkes.Schedule
 
       defp talk_slug_mapset(conn) do
         conn.assigns.current_agenda_items
@@ -36,8 +38,8 @@ defmodule FawkesWeb do
 
       defp talk_counts(schedule) do
         schedule
-        |> Fawkes.Schedule.to_talk_ids()
-        |> Fawkes.Profile.fetch_attendance_counts()
+        |> Schedule.to_talk_ids()
+        |> Profile.fetch_attendance_counts()
       end
     end
   end

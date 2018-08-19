@@ -1,6 +1,8 @@
 defmodule Fawkes.Schedule.Seed.Category do
-  alias Fawkes.Schedule.Category
+  @moduledoc false
+
   alias Fawkes.Repo
+  alias Fawkes.Schedule.Category
 
   def perform do
     Enum.each(data(), fn(attrs) ->

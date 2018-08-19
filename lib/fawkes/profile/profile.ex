@@ -4,10 +4,10 @@ defmodule Fawkes.Profile do
   """
 
   import Ecto.Query
+  alias Fawkes.Profile.AgendaItem
+  alias Fawkes.Profile.Info
   alias Fawkes.Profile.User
   alias Fawkes.Repo
-  alias Fawkes.Profile.Info
-  alias Fawkes.Profile.AgendaItem
   @spec get_user(pos_integer) :: User.t | nil
   @spec fetch_or_create_for_user(User.t) :: Info.t
   @spec fetch_info(User.t) :: Info.t
@@ -102,7 +102,7 @@ defmodule Fawkes.Profile do
   """
   def remove_from_agenda(%User{profile: profile}, talk_id) when not is_nil profile do
     with %AgendaItem{} = item <- fetch_agenda_item(profile.id, talk_id) do
-      Repo.delete(item) |> IO.inspect
+      Repo.delete(item)
     else
       _ -> nil
     end

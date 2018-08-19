@@ -1,9 +1,11 @@
 defmodule FawkesWeb.Signup.UserController do
   use FawkesWeb, :controller
 
+  alias Ecto.Changeset
+  alias Fawkes.Auth.Guardian.Plug, as: GuardianPlug
   alias Fawkes.Signup
   alias Fawkes.Signup.User
-  alias Fawkes.Auth.Guardian.Plug, as: GuardianPlug
+  alias Plug.Conn
 
   def new(conn, _params) do
     conn.assigns.current_user
@@ -12,7 +14,7 @@ defmodule FawkesWeb.Signup.UserController do
          true -> conn
          _ -> GuardianPlug.sign_out(conn)
        end
-    |> Plug.Conn.assign(:ignore_login, true)
+    |> Conn.assign(:ignore_login, true)
     |> render("new.html", changeset: Signup.change_user(%User{}),
                           maybe_user: nil)
   end
@@ -24,7 +26,7 @@ defmodule FawkesWeb.Signup.UserController do
         |> put_flash(:info, "User created successfully.")
         |> GuardianPlug.sign_in(user)
         |> redirect(to: page_path(conn, :timeline))
-      {:error, %Ecto.Changeset{} = changeset} ->
+      {:error, %Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
   end

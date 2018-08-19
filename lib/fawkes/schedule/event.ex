@@ -1,4 +1,9 @@
 defmodule Fawkes.Schedule.Event do
+  @moduledoc """
+  Events are schedulable items which have no specific speaker. Things like
+  breaks, meals, or lightning talk sessions.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
   alias Fawkes.Repo.Symbol, as: SymbolType

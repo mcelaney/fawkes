@@ -1,9 +1,6 @@
 defmodule FawkesWeb.ProfileController do
   use FawkesWeb, :controller
 
-  alias Fawkes.Profile
-  alias Fawkes.Schedule
-
   def index(conn, _) do
     render(conn, "index.html", profiles: Profile.fetch_user_profiles())
   end

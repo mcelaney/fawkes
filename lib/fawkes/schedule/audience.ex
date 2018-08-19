@@ -1,4 +1,9 @@
 defmodule Fawkes.Schedule.Audience do
+  @moduledoc """
+  The relative experience level attendees should have to get the most out of a
+  talk.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
   alias Fawkes.Repo.Symbol, as: SymbolType

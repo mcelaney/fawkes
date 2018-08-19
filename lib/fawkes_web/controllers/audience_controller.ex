@@ -1,6 +1,5 @@
 defmodule FawkesWeb.AudienceController do
   use FawkesWeb, :controller
-  alias Fawkes.Schedule
 
   def show(conn, %{"id" => id}) do
     schedule = Schedule.fetch_by_audience(id)

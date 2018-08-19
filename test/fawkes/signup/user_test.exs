@@ -1,8 +1,8 @@
 defmodule Fawkes.Signup.UserTest do
   use Fawkes.DataCase
+  alias Comeonin.Bcrypt
   alias Fawkes.Signup
   alias Fawkes.Signup.User
-  alias Comeonin.Bcrypt
 
   @valid_username "Mac"
   @valid_password "Strong Password"

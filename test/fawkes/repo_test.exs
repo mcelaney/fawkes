@@ -1,8 +1,8 @@
 defmodule Fawkes.RepoTest do
   use Fawkes.DataCase
+  alias Fawkes.Profile.User
   alias Fawkes.Repo
   alias Fawkes.Signup
-  alias Fawkes.Profile.User
 
   @valid_username "Mac"
   @valid_password "Strong Password"

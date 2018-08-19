@@ -1,16 +1,17 @@
 defmodule FawkesWeb.ScheduleView do
   use FawkesWeb, :view
   alias Fawkes.Profile
+  alias FawkesWeb.ScheduleView
   alias FawkesWeb.SharedView
 
   def render_slot(slot, assigns) do
     cond do
       slot.none_selected? ->
-        FawkesWeb.ScheduleView.render("selection_needed.html", assigns)
+        ScheduleView.render("selection_needed.html", assigns)
       talks_exist?(slot) ->
-        render(FawkesWeb.ScheduleView, "talks.html", assigns)
+        render(ScheduleView, "talks.html", assigns)
       not is_nil(slot.event) ->
-        render(FawkesWeb.ScheduleView, "event.html", assigns)
+        render(ScheduleView, "event.html", assigns)
     end
   end
 

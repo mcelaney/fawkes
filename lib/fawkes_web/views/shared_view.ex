@@ -2,9 +2,10 @@ defmodule FawkesWeb.SharedView do
   use FawkesWeb, :view
   alias Fawkes.Auth
   alias Fawkes.Auth.User
+  alias FawkesWeb.SharedView
 
   def render_timespan(%{start: _, finish: _} = slot_info) do
-    FawkesWeb.SharedView.render("time_span.html", _display_time_params(slot_info))
+    SharedView.render("time_span.html", _display_time_params(slot_info))
   end
 
   defp _display_time_params(%{start: start, finish: finish}) do

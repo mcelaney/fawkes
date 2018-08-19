@@ -1,4 +1,8 @@
 defmodule Fawkes.Schedule.Location do
+  @moduledoc """
+  Where the talk will be located.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
   alias Fawkes.Repo.Symbol, as: SymbolType

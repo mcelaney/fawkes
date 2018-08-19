@@ -1,4 +1,8 @@
 defmodule Fawkes.Schedule.Speaker do
+  @moduledoc """
+  The person given a talk
+  """
+
   use Ecto.Schema
   use Arc.Ecto.Schema
   import Ecto.Changeset

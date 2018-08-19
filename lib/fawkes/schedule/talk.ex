@@ -1,12 +1,16 @@
 defmodule Fawkes.Schedule.Talk do
+  @moduledoc """
+  Events are schedulable items which have a specific speaker.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
   alias Fawkes.Repo.Symbol, as: SymbolType
+  alias Fawkes.Schedule.Audience
+  alias Fawkes.Schedule.Category
+  alias Fawkes.Schedule.Location
   alias Fawkes.Schedule.Slot
   alias Fawkes.Schedule.Speaker
-  alias Fawkes.Schedule.Category
-  alias Fawkes.Schedule.Audience
-  alias Fawkes.Schedule.Location
 
   @type t :: %__MODULE__{}
 

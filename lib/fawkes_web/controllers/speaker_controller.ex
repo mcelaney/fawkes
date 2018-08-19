@@ -1,6 +1,5 @@
 defmodule FawkesWeb.SpeakerController do
   use FawkesWeb, :controller
-  alias Fawkes.Schedule
 
   def index(conn, _params) do
     render(conn, "index.html", speakers: Schedule.fetch_speakers())

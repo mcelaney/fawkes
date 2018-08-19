@@ -1,8 +1,10 @@
 defmodule Fawkes.Schedule.Seed.Event do
+  @moduledoc false
+
   import Ecto.Query
-  alias Fawkes.Schedule.Slot
-  alias Fawkes.Schedule.Event
   alias Fawkes.Repo
+  alias Fawkes.Schedule.Event
+  alias Fawkes.Schedule.Slot
 
   def perform do
     Slot

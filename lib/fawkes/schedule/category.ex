@@ -1,4 +1,8 @@
 defmodule Fawkes.Schedule.Category do
+  @moduledoc """
+  The topic of a talk
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
   alias Fawkes.Repo.Symbol, as: SymbolType

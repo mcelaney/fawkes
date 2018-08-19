@@ -1,9 +1,9 @@
 defmodule Fawkes.Auth.GuardianTest do
   use Fawkes.DataCase
+  alias Fawkes.Auth.Guardian
   alias Fawkes.Auth.User, as: AuthUser
   alias Fawkes.Signup
   alias Fawkes.Signup.User, as: SignupUser
-  alias Fawkes.Auth.Guardian
 
   @valid_username "Mac"
   @valid_password "Strong Password"

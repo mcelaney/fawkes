@@ -1,6 +1,5 @@
 defmodule FawkesWeb.ScheduleController do
   use FawkesWeb, :controller
-  alias Fawkes.Schedule
 
   def index(conn, _params) do
     schedule = Schedule.fetch()
@@ -11,7 +10,7 @@ defmodule FawkesWeb.ScheduleController do
   end
 
   def show(conn, %{"id" => slug}) do
-    schedule = slug |> Schedule.fetch() |> List.wrap() |> IO.inspect
+    schedule = slug |> Schedule.fetch() |> List.wrap()
 
     render(conn, "index.html",
                  schedules: group_schedule_by_dates(schedule),

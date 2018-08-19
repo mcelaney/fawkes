@@ -1,4 +1,10 @@
 defmodule Fawkes.Schedule.Slot do
+  @moduledoc """
+  Slots are the time slots which make up the building blocks of a schedule.
+
+  Slots should have either one event or n available talks.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
   alias Fawkes.Repo.Symbol, as: SymbolType
