@@ -5,7 +5,7 @@ defmodule Fawkes.Schedule.Seed.Location do
   alias Fawkes.Schedule.Location
 
   def perform do
-    Enum.each(data(), fn(attrs) ->
+    Enum.each(data(), fn attrs ->
       %Location{}
       |> Location.changeset(attrs)
       |> Repo.insert()

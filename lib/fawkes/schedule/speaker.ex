@@ -11,16 +11,16 @@ defmodule Fawkes.Schedule.Speaker do
   @type t :: %__MODULE__{}
 
   schema "profiles" do
-    field :company, :string
-    field :description, :string
-    field :first, :string
-    field :github, :string
-    field :image, Fawkes.ImageUploader.Type
-    field :last, :string
-    field :slug, SymbolType
-    field :twitter, :string
+    field(:company, :string)
+    field(:description, :string)
+    field(:first, :string)
+    field(:github, :string)
+    field(:image, Fawkes.ImageUploader.Type)
+    field(:last, :string)
+    field(:slug, SymbolType)
+    field(:twitter, :string)
 
-    has_one :talk, Fawkes.Schedule.Talk
+    has_one(:talk, Fawkes.Schedule.Talk)
 
     timestamps()
   end

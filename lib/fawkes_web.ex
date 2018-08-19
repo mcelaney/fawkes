@@ -28,12 +28,12 @@ defmodule FawkesWeb do
 
       defp talk_slug_mapset(conn) do
         conn.assigns.current_agenda_items
-        |> Enum.map(fn(%{slug: slug}) -> slug end)
+        |> Enum.map(fn %{slug: slug} -> slug end)
         |> MapSet.new()
       end
 
       defp group_schedule_by_dates(slots) do
-        Enum.group_by(slots, fn(slot) -> slot.start |> NaiveDateTime.to_date() end)
+        Enum.group_by(slots, fn slot -> slot.start |> NaiveDateTime.to_date() end)
       end
 
       defp talk_counts(schedule) do
@@ -46,8 +46,9 @@ defmodule FawkesWeb do
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/fawkes_web/templates",
-                        namespace: FawkesWeb
+      use Phoenix.View,
+        root: "lib/fawkes_web/templates",
+        namespace: FawkesWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]

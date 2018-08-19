@@ -12,16 +12,16 @@ defmodule Fawkes.Schedule do
   @typedoc """
   This param type is used to search against Fawkes.Repo.Symbol types
   """
-  @type slugable :: atom | String.t
+  @type slugable :: atom | String.t()
 
-  @spec fetch() :: list(Slot.t)
-  @spec fetch_by_audience(slugable) :: list(Slot.t)
-  @spec fetch_by_category(slugable) :: list(Slot.t)
-  @spec fetch_speakers() :: list(Speaker.t)
-  @spec fetch_speakers(slugable) :: Speaker.t
-  @spec fetch_talks(slugable) :: Talk.t
+  @spec fetch() :: list(Slot.t())
+  @spec fetch_by_audience(slugable) :: list(Slot.t())
+  @spec fetch_by_category(slugable) :: list(Slot.t())
+  @spec fetch_speakers() :: list(Speaker.t())
+  @spec fetch_speakers(slugable) :: Speaker.t()
+  @spec fetch_talks(slugable) :: Talk.t()
   @spec single_talk_slot_talk_ids() :: list(pos_integer)
-  @spec to_talk_ids(list(Slot.t)) :: list(pos_integer)
+  @spec to_talk_ids(list(Slot.t())) :: list(pos_integer)
 
   defdelegate seed(), to: Fawkes.Schedule.Seed, as: :perform
 
@@ -32,7 +32,7 @@ defmodule Fawkes.Schedule do
     Slot
     |> preload([:event, [talks: [:speaker, :category, :audience, :location]]])
     |> order_by([slot], slot.start)
-    |> Repo.all
+    |> Repo.all()
   end
 
   def fetch(talk_ids) when is_list(talk_ids) do
@@ -42,17 +42,17 @@ defmodule Fawkes.Schedule do
   def fetch(slug) do
     Slot
     |> where([slot], slot.slug == ^slug)
-    |> preload([talks: [:speaker, :category, :audience, :location]])
-    |> Repo.one
+    |> preload(talks: [:speaker, :category, :audience, :location])
+    |> Repo.one()
   end
 
   def fetch_for_talks(talk_ids) do
     Slot
     |> join(:inner, [slot], talks in assoc(slot, :talks))
     |> where([_slot, talks], talks.id in ^talk_ids)
-    |> preload([_, talks], [talks: {talks, [:speaker, :category, :audience, :location]}])
+    |> preload([_, talks], talks: {talks, [:speaker, :category, :audience, :location]})
     |> order_by([slot], slot.start)
-    |> Repo.all
+    |> Repo.all()
   end
 
   @doc """
@@ -68,7 +68,7 @@ defmodule Fawkes.Schedule do
     |> where([_slot, _talks, audiences], audiences.slug == ^slug)
     |> preload([_, talks], [:event, [talks: {talks, [:speaker, :category, :audience, :location]}]])
     |> order_by([slot], slot.start)
-    |> Repo.all
+    |> Repo.all()
   end
 
   @doc """
@@ -84,7 +84,7 @@ defmodule Fawkes.Schedule do
     |> where([_slot, _talks, categories], categories.slug == ^slug)
     |> preload([_, talks], [:event, [talks: {talks, [:speaker, :category, :audience, :location]}]])
     |> order_by([slot], slot.start)
-    |> Repo.all
+    |> Repo.all()
   end
 
   @doc """
@@ -95,7 +95,7 @@ defmodule Fawkes.Schedule do
     |> join(:right, [speaker], talk in assoc(speaker, :talk))
     |> preload([:talk])
     |> order_by([speaker], speaker.last)
-    |> Repo.all
+    |> Repo.all()
   end
 
   @doc """
@@ -106,7 +106,7 @@ defmodule Fawkes.Schedule do
     |> join(:right, [speaker], talk in assoc(speaker, :talk))
     |> where([speaker], speaker.slug == ^slug)
     |> preload([:talk])
-    |> Repo.one
+    |> Repo.one()
   end
 
   @doc """
@@ -116,7 +116,7 @@ defmodule Fawkes.Schedule do
     Talk
     |> where([talk], talk.slug == ^slug)
     |> preload([:slot, :speaker, :category, :audience, :location])
-    |> Repo.one
+    |> Repo.one()
   end
 
   @doc """
@@ -128,10 +128,9 @@ defmodule Fawkes.Schedule do
     |> where([talk], fragment("? in (SELECT slot_id
                                      FROM talks
                                      GROUP BY slot_id
-                                     HAVING count(slot_id) = 1)",
-                              talk.slot_id))
+                                     HAVING count(slot_id) = 1)", talk.slot_id))
     |> select([talk], talk.id)
-    |> Repo.all
+    |> Repo.all()
   end
 
   @doc """
@@ -139,11 +138,11 @@ defmodule Fawkes.Schedule do
   those slots.
   """
   def to_talk_ids(slots) do
-    Enum.reduce(slots, [], fn(slot, acc) ->
+    Enum.reduce(slots, [], fn slot, acc ->
       slot.talks
-      |> Enum.reduce([], fn(talk, acc) ->
-           [talk.id|acc]
-         end)
+      |> Enum.reduce([], fn talk, acc ->
+        [talk.id | acc]
+      end)
       |> Kernel.++(acc)
     end)
   end

@@ -6,9 +6,9 @@ defmodule Fawkes.Profile.User do
   @type t :: %__MODULE__{}
 
   schema "users" do
-    field :username, :string
+    field(:username, :string)
 
-    has_one :profile, Fawkes.Profile.Info
+    has_one(:profile, Fawkes.Profile.Info)
 
     timestamps()
   end

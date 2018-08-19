@@ -5,7 +5,7 @@ defmodule Fawkes.Schedule.Seed.Category do
   alias Fawkes.Schedule.Category
 
   def perform do
-    Enum.each(data(), fn(attrs) ->
+    Enum.each(data(), fn attrs ->
       %Category{}
       |> Category.changeset(attrs)
       |> Repo.insert()

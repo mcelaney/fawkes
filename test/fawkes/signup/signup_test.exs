@@ -11,7 +11,7 @@ defmodule Fawkes.SignupTest do
     params = %{"username" => @valid_username, "password" => @valid_password}
     {:ok, result} = Signup.create_user(params)
 
-    refute is_nil result.id
+    refute is_nil(result.id)
     assert %User{} = result
     assert result.username == @valid_username
   end

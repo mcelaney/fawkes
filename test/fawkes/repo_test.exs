@@ -21,8 +21,7 @@ defmodule Fawkes.RepoTest do
       assert result.username == @valid_username
     end
 
-    test "fetch/2 returns a :not_found tagged tuple if not found",
-         %{user_id: id} do
+    test "fetch/2 returns a :not_found tagged tuple if not found", %{user_id: id} do
       result = Repo.fetch(User, id + 1)
 
       assert result == {:error, :not_found}
@@ -34,8 +33,7 @@ defmodule Fawkes.RepoTest do
     end
 
     test "fetch_by/2 returns a :not_found tagged tuple if not found" do
-      {:not_found, result} =
-        Repo.fetch_by(User, username: @valid_username <> "a")
+      {:not_found, result} = Repo.fetch_by(User, username: @valid_username <> "a")
 
       assert result == User
     end

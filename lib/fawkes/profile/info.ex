@@ -9,18 +9,18 @@ defmodule Fawkes.Profile.Info do
   @type t :: %__MODULE__{}
 
   schema "profiles" do
-    field :company, :string
-    field :description, :string
-    field :first, :string
-    field :github, :string
-    field :image, Fawkes.ImageUploader.Type
-    field :last, :string
-    field :slug, SymbolType
-    field :twitter, :string
-    field :title, :string
+    field(:company, :string)
+    field(:description, :string)
+    field(:first, :string)
+    field(:github, :string)
+    field(:image, Fawkes.ImageUploader.Type)
+    field(:last, :string)
+    field(:slug, SymbolType)
+    field(:twitter, :string)
+    field(:title, :string)
 
-    belongs_to :user, Fawkes.Profile.User
-    has_many :agenda_items, Fawkes.Profile.AgendaItem, foreign_key: :profile_id
+    belongs_to(:user, Fawkes.Profile.User)
+    has_many(:agenda_items, Fawkes.Profile.AgendaItem, foreign_key: :profile_id)
 
     timestamps()
   end
@@ -37,7 +37,17 @@ defmodule Fawkes.Profile.Info do
   @doc false
   def changeset(info, attrs) do
     info
-    |> cast(attrs, [:first, :last, :slug, :company, :title, :github, :twitter, :description, :image])
+    |> cast(attrs, [
+      :first,
+      :last,
+      :slug,
+      :company,
+      :title,
+      :github,
+      :twitter,
+      :description,
+      :image
+    ])
     |> cast_attachments(attrs, [:image])
     |> validate_required([:first, :last])
     |> validate_exclusion(:slug, [:edit, :new])

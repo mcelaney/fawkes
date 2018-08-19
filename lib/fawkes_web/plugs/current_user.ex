@@ -21,7 +21,8 @@ defmodule FawkesWeb.Plugs.CurrentUser do
   end
 
   defp agenda_items(%{profile: %{agenda_items: items}}) do
-    Enum.map(items, fn(%{talk: talk}) -> talk end)
+    Enum.map(items, fn %{talk: talk} -> talk end)
   end
+
   defp agenda_items(_), do: []
 end

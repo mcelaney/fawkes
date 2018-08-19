@@ -5,7 +5,7 @@ defmodule Fawkes.Schedule.Seed.Slot do
   alias Fawkes.Schedule.Slot
 
   def perform do
-    Enum.each(data(), fn(attrs) ->
+    Enum.each(data(), fn attrs ->
       %Slot{}
       |> Slot.changeset(attrs)
       |> Repo.insert()
@@ -14,10 +14,7 @@ defmodule Fawkes.Schedule.Seed.Slot do
 
   def data do
     [
-      %{slug: :slot_1,
-        start: "2018-09-06 07:00:00",
-        finish: "2018-09-06 08:30:00"
-      },
+      %{slug: :slot_1, start: "2018-09-06 07:00:00", finish: "2018-09-06 08:30:00"},
       %{
         slug: :slot_2,
         start: "2018-09-06 08:30:00",
@@ -83,7 +80,6 @@ defmodule Fawkes.Schedule.Seed.Slot do
         start: "2018-09-06 16:45:00",
         finish: "2018-09-06 18:15:00"
       },
-
       %{
         slug: :slot_f,
         start: "2018-09-07 08:00:00",

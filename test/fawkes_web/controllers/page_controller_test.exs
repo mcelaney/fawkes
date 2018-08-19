@@ -3,7 +3,7 @@ defmodule FawkesWeb.PageControllerTest do
   alias Fawkes.Signup
 
   test "GET /", %{conn: conn} do
-    conn = get conn, "/"
+    conn = get(conn, "/")
     assert html_response(conn, 200) =~ "Fawkes"
   end
 
@@ -23,10 +23,10 @@ defmodule FawkesWeb.PageControllerTest do
     end
 
     test "POST /login with invalid params", %{conn: conn} do
-      conn = post conn, page_path(conn, :login), user: @bad_login_attrs
+      conn = post(conn, page_path(conn, :login), user: @bad_login_attrs)
       assert redirected_to(conn) == page_path(conn, :index)
 
-      conn = get conn, "/"
+      conn = get(conn, "/")
       assert html_response(conn, 200) =~ "Get Started"
     end
   end
@@ -37,7 +37,7 @@ defmodule FawkesWeb.PageControllerTest do
         %{username: @valid_username, password: @valid_password}
         |> Signup.create_user()
 
-      conn = post conn, page_path(conn, :login), user: @login_attrs
+      conn = post(conn, page_path(conn, :login), user: @login_attrs)
 
       [user: user, conn: conn]
     end

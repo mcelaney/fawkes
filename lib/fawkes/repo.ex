@@ -23,15 +23,15 @@ defmodule Fawkes.Repo do
 
   {:ok, %Post{id: 1, title: "My post"}}
   """
-  @spec fetch_by(Ecto.Queryable.t, Keyword.t | map, Keyword.t) ::
-        {:ok, Ecto.Schema.t} | {:not_found, Ecto.Queryable.t}
+  @spec fetch_by(Ecto.Queryable.t(), Keyword.t() | map, Keyword.t()) ::
+          {:ok, Ecto.Schema.t()} | {:not_found, Ecto.Queryable.t()}
   def fetch_by(queryable, clauses, opts \\ []) do
     queryable
     |> get_by(clauses, opts)
     |> case do
-         nil -> {:not_found, queryable}
-         obj -> {:ok, obj}
-       end
+      nil -> {:not_found, queryable}
+      obj -> {:ok, obj}
+    end
   end
 
   @doc """
@@ -48,8 +48,8 @@ defmodule Fawkes.Repo do
 
   {:ok, %Post{id: 1, title: "My post"}}
   """
-  @spec fetch(Ecto.Queryable.t, pos_integer | String.t) ::
-        {:ok, Ecto.Schema.t} | {:error, :not_found}
+  @spec fetch(Ecto.Queryable.t(), pos_integer | String.t()) ::
+          {:ok, Ecto.Schema.t()} | {:error, :not_found}
   def fetch(module, id) do
     with %_{} = result <- get(module, id) do
       {:ok, result}

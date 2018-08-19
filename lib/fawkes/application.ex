@@ -15,7 +15,7 @@ defmodule Fawkes.Application do
       # Start the Ecto repository
       supervisor(Repo, []),
       # Start the endpoint when the application starts
-      supervisor(Endpoint, []),
+      supervisor(Endpoint, [])
       # Start your own worker by calling: Fawkes.Worker.start_link(arg1, arg2, arg3)
       # worker(Fawkes.Worker, [arg1, arg2, arg3]),
     ]

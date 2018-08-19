@@ -5,11 +5,11 @@ defmodule Fawkes.Auth.User do
   import Ecto.Changeset
 
   @type t :: %__MODULE__{}
-  @spec changeset(t, map) :: Ecto.Changeset.t
+  @spec changeset(t, map) :: Ecto.Changeset.t()
 
   schema "users" do
-    field :password, :string
-    field :username, :string
+    field(:password, :string)
+    field(:username, :string)
 
     timestamps()
   end

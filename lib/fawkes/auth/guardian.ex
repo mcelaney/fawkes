@@ -9,11 +9,11 @@ defmodule Fawkes.Auth.Guardian do
   alias Fawkes.Profile.User, as: ProfileUser
   alias Fawkes.Signup.User, as: SignupUser
 
-  @type get_user_func :: (String.t -> boolean)
+  @type get_user_func :: (String.t() -> boolean)
 
-  @spec subject_for_token(AuthUser.t | SignupUser.t, any) :: {:ok, String.t}
-  @spec resource_from_claims(%{String.t => String.t}, get_user_func) ::
-        {:ok, ProfileUser.t} | {:error, :not_found}
+  @spec subject_for_token(AuthUser.t() | SignupUser.t(), any) :: {:ok, String.t()}
+  @spec resource_from_claims(%{String.t() => String.t()}, get_user_func) ::
+          {:ok, ProfileUser.t()} | {:error, :not_found}
 
   @doc """
   Given a user struct returns the id for use as a token

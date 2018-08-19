@@ -10,8 +10,8 @@ defmodule Fawkes.Schedule.Category do
   @type t :: %__MODULE__{}
 
   schema "categories" do
-    field :name, :string
-    field :slug, SymbolType
+    field(:name, :string)
+    field(:slug, SymbolType)
 
     timestamps()
   end

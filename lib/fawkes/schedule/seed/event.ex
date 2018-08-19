@@ -10,11 +10,11 @@ defmodule Fawkes.Schedule.Seed.Event do
     Slot
     |> fetch_all_by_slug()
     |> data()
-    |> Enum.each(fn(attrs) ->
-         %Event{}
-         |> Event.changeset(attrs)
-         |> Repo.insert()
-       end)
+    |> Enum.each(fn attrs ->
+      %Event{}
+      |> Event.changeset(attrs)
+      |> Repo.insert()
+    end)
   end
 
   def data(relations) do
@@ -95,9 +95,9 @@ defmodule Fawkes.Schedule.Seed.Event do
   defp fetch_all_by_slug(query) do
     query
     |> select([item], %{slug: item.slug, id: item.id})
-    |> Repo.all
-    |> Enum.reduce(%{}, fn(%{slug: slug, id: id}, acc) ->
-         Map.put(acc, slug, id)
-       end)
+    |> Repo.all()
+    |> Enum.reduce(%{}, fn %{slug: slug, id: id}, acc ->
+      Map.put(acc, slug, id)
+    end)
   end
 end

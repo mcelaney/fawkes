@@ -39,8 +39,7 @@ defmodule Fawkes.Signup.UserTest do
 
     test "registration_changeset/2 rejects duplicate usernames" do
       params = %{"username" => @valid_username, "password" => @valid_password}
-      {:error, change} =
-        %User{} |> User.registration_changeset(params) |> Repo.insert()
+      {:error, change} = %User{} |> User.registration_changeset(params) |> Repo.insert()
 
       assert %Ecto.Changeset{valid?: false} = change
     end

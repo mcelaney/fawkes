@@ -9,6 +9,6 @@ defmodule Fawkes.Profile.Talk do
   @type t :: %__MODULE__{}
 
   schema "talks" do
-    field :slug, SymbolType
+    field(:slug, SymbolType)
   end
 end

@@ -7,8 +7,8 @@ defmodule Fawkes.Signup.User do
 
   @type t :: %__MODULE__{}
 
-  @spec changeset(t, map) :: Ecto.Changeset.t
-  @spec registration_changeset(t, map) :: Ecto.Changeset.t
+  @spec changeset(t, map) :: Ecto.Changeset.t()
+  @spec registration_changeset(t, map) :: Ecto.Changeset.t()
 
   @bad_passwords ~w(
     12345678
@@ -31,8 +31,8 @@ defmodule Fawkes.Signup.User do
   )
 
   schema "users" do
-    field :password, :string
-    field :username, :string
+    field(:password, :string)
+    field(:username, :string)
 
     timestamps()
   end
@@ -48,19 +48,16 @@ defmodule Fawkes.Signup.User do
     user
     |> cast(attrs, [:username, :password])
     |> validate_required([:username, :password])
-    |> validate_exclusion(:password,
-                          @bad_passwords,
-                          message: "That password is too common.")
+    |> validate_exclusion(:password, @bad_passwords, message: "That password is too common.")
     |> validate_length(:password, min: 8)
     |> put_pass_hash()
     |> unique_constraint(:username)
   end
 
-  @spec put_pass_hash(Ecto.Changeset.t) :: Ecto.Changeset.t
-  defp put_pass_hash(
-    %Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset
-  ) do
+  @spec put_pass_hash(Ecto.Changeset.t()) :: Ecto.Changeset.t()
+  defp put_pass_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
     change(changeset, password: Bcrypt.hashpwsalt(password))
   end
+
   defp put_pass_hash(changeset), do: changeset
 end

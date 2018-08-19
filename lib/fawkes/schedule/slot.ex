@@ -14,13 +14,13 @@ defmodule Fawkes.Schedule.Slot do
   @type t :: %__MODULE__{}
 
   schema "schedule_slots" do
-    field :finish, :naive_datetime
-    field :slug, SymbolType
-    field :start, :naive_datetime
-    field :none_selected?, :boolean, default: false, virtual: true
+    field(:finish, :naive_datetime)
+    field(:slug, SymbolType)
+    field(:start, :naive_datetime)
+    field(:none_selected?, :boolean, default: false, virtual: true)
 
-    has_one :event, Event
-    has_many :talks, Talk
+    has_one(:event, Event)
+    has_many(:talks, Talk)
 
     timestamps()
   end

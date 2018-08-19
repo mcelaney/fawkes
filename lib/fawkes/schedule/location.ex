@@ -10,8 +10,8 @@ defmodule Fawkes.Schedule.Location do
   @type t :: %__MODULE__{}
 
   schema "locations" do
-    field :name, :string
-    field :slug, SymbolType
+    field(:name, :string)
+    field(:slug, SymbolType)
 
     timestamps()
   end

@@ -5,7 +5,7 @@ defmodule Fawkes.Schedule.Seed.Audience do
   alias Fawkes.Schedule.Audience
 
   def perform do
-    Enum.each(data(), fn(attrs) ->
+    Enum.each(data(), fn attrs ->
       %Audience{}
       |> Audience.changeset(attrs)
       |> Repo.insert()

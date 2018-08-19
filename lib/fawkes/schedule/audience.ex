@@ -11,8 +11,8 @@ defmodule Fawkes.Schedule.Audience do
   @type t :: %__MODULE__{}
 
   schema "audiences" do
-    field :name, :string
-    field :slug, SymbolType
+    field(:name, :string)
+    field(:slug, SymbolType)
 
     timestamps()
   end

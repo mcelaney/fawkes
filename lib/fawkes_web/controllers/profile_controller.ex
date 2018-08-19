@@ -7,16 +7,20 @@ defmodule FawkesWeb.ProfileController do
 
   def show(conn, %{"id" => slug}) do
     profile = Profile.fetch_user_profile(slug)
+
     schedule =
       profile.agenda_items
-      |> Enum.map(fn(%{talk_id: id}) -> id end)
+      |> Enum.map(fn %{talk_id: id} -> id end)
       |> Schedule.fetch_for_talks()
 
-    render(conn, "show.html",
-                 user: profile,
-                 schedules: group_schedule_by_dates(schedule),
-                 talk_counts: talk_counts(schedule),
-                 agenda_item_slugs: talk_slug_mapset(conn))
+    render(
+      conn,
+      "show.html",
+      user: profile,
+      schedules: group_schedule_by_dates(schedule),
+      talk_counts: talk_counts(schedule),
+      agenda_item_slugs: talk_slug_mapset(conn)
+    )
   end
 
   def edit(conn, _params) do
@@ -29,6 +33,7 @@ defmodule FawkesWeb.ProfileController do
         conn
         |> put_flash(:info, "User updated successfully.")
         |> redirect(to: page_path(conn, :timeline))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", changeset: changeset)
     end

@@ -15,16 +15,16 @@ defmodule Fawkes.Schedule.Talk do
   @type t :: %__MODULE__{}
 
   schema "talks" do
-    field :description, :string
-    field :slug, SymbolType
-    field :title, :string
-    field :selected?, :boolean, default: false, virtual: true
+    field(:description, :string)
+    field(:slug, SymbolType)
+    field(:title, :string)
+    field(:selected?, :boolean, default: false, virtual: true)
 
-    belongs_to :slot, Slot
-    belongs_to :speaker, Speaker
-    belongs_to :category, Category
-    belongs_to :audience, Audience
-    belongs_to :location, Location
+    belongs_to(:slot, Slot)
+    belongs_to(:speaker, Speaker)
+    belongs_to(:category, Category)
+    belongs_to(:audience, Audience)
+    belongs_to(:location, Location)
 
     timestamps()
   end
@@ -32,8 +32,25 @@ defmodule Fawkes.Schedule.Talk do
   @doc false
   def changeset(talk, attrs) do
     talk
-    |> cast(attrs, [:slug, :title, :description, :slot_id, :speaker_id, :category_id, :audience_id, :location_id])
-    |> validate_required([:slug, :title, :slot_id, :speaker_id, :category_id, :audience_id, :location_id])
+    |> cast(attrs, [
+      :slug,
+      :title,
+      :description,
+      :slot_id,
+      :speaker_id,
+      :category_id,
+      :audience_id,
+      :location_id
+    ])
+    |> validate_required([
+      :slug,
+      :title,
+      :slot_id,
+      :speaker_id,
+      :category_id,
+      :audience_id,
+      :location_id
+    ])
     |> unique_constraint(:slug)
     |> assoc_constraint(:slot)
     |> assoc_constraint(:speaker)
