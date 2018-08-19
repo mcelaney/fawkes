@@ -9,14 +9,13 @@ defmodule Fawkes.Schedule do
   alias Fawkes.Schedule.Speaker
   alias Fawkes.Schedule.Talk
 
-  @typedoc """
-  This param type is used to search against Fawkes.Repo.Symbol types
-  """
-  @type slugable :: atom | String.t()
+  @type slugable :: Fawkes.Repo.Symbol.t()
 
   @spec fetch() :: list(Slot.t())
+  @spec fetch(list(pos_integer) | slugable) :: list(Slot.t()) | Slot.t()
   @spec fetch_by_audience(slugable) :: list(Slot.t())
   @spec fetch_by_category(slugable) :: list(Slot.t())
+  @spec fetch_for_talks(list(pos_integer)) :: list(Slot.t())
   @spec fetch_speakers() :: list(Speaker.t())
   @spec fetch_speakers(slugable) :: Speaker.t()
   @spec fetch_talks(slugable) :: Talk.t()
@@ -35,24 +34,25 @@ defmodule Fawkes.Schedule do
     |> Repo.all()
   end
 
+  @doc """
+  Given a list of talk_ids returns a list of slots which are related to those
+  talk ids.
+
+  This method returns talks through Fawkes.Schedule.Agenda.  All talks returned
+  are marked `selected? = true`
+  """
   def fetch(talk_ids) when is_list(talk_ids) do
     __MODULE__.Agenda.fetch(talk_ids)
   end
 
+  @doc """
+  Given a string or atom used as an audience slug - returns the related slot.
+  """
   def fetch(slug) do
     Slot
     |> where([slot], slot.slug == ^slug)
     |> preload(talks: [:speaker, :category, :audience, :location])
     |> Repo.one()
-  end
-
-  def fetch_for_talks(talk_ids) do
-    Slot
-    |> join(:inner, [slot], talks in assoc(slot, :talks))
-    |> where([_slot, talks], talks.id in ^talk_ids)
-    |> preload([_, talks], talks: {talks, [:speaker, :category, :audience, :location]})
-    |> order_by([slot], slot.start)
-    |> Repo.all()
   end
 
   @doc """
@@ -83,6 +83,19 @@ defmodule Fawkes.Schedule do
     |> join(:left, [_slot, talks], categories in assoc(talks, :category))
     |> where([_slot, _talks, categories], categories.slug == ^slug)
     |> preload([_, talks], [:event, [talks: {talks, [:speaker, :category, :audience, :location]}]])
+    |> order_by([slot], slot.start)
+    |> Repo.all()
+  end
+
+  @doc """
+  Given a list of talk_ids returns all slots which contain the related talks
+  preloaded with only the related talks.  This method will not preload events.
+  """
+  def fetch_for_talks(talk_ids) do
+    Slot
+    |> join(:inner, [slot], talks in assoc(slot, :talks))
+    |> where([_slot, talks], talks.id in ^talk_ids)
+    |> preload([_, talks], talks: {talks, [:speaker, :category, :audience, :location]})
     |> order_by([slot], slot.start)
     |> Repo.all()
   end

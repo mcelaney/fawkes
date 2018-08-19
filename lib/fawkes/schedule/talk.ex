@@ -14,6 +14,8 @@ defmodule Fawkes.Schedule.Talk do
 
   @type t :: %__MODULE__{}
 
+  @spec changeset(t, map) :: Changeset.t()
+
   schema "talks" do
     field(:description, :string)
     field(:slug, SymbolType)

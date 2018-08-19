@@ -6,6 +6,9 @@ defmodule Fawkes.Schedule.Agenda do
   import Ecto.Query
   alias Fawkes.Repo
   alias Fawkes.Schedule.Slot
+  alias Fawkes.Schedule.Talk
+
+  @type slot_map :: %{pos_integer => list(Talk.t())}
 
   @spec fetch(list(pos_integer)) :: list(Slot.t())
 
@@ -23,6 +26,7 @@ defmodule Fawkes.Schedule.Agenda do
     |> Enum.reverse()
   end
 
+  @spec _fetch(slot_map) :: list(Slot.t())
   defp _fetch(talks_grouped_by_id) do
     Slot
     |> preload([:event])
@@ -34,6 +38,7 @@ defmodule Fawkes.Schedule.Agenda do
     |> Enum.reverse()
   end
 
+  @spec fetch_picked_talks_grouped_by_id(list(pos_integer)) :: slot_map
   defp fetch_picked_talks_grouped_by_id(talk_ids) do
     Slot
     |> join(:left, [slot], talks in assoc(slot, :talks))
@@ -42,10 +47,16 @@ defmodule Fawkes.Schedule.Agenda do
     |> order_by([slot], slot.start)
     |> Repo.all()
     |> Enum.reduce(%{}, fn %{id: slot_id} = slot, acc ->
-      Map.put(acc, slot_id, Enum.map(slot.talks, fn talk -> Map.put(talk, :selected?, true) end))
+      Map.put(acc, slot_id, mark_talks_selected(slot.talks))
     end)
   end
 
+  @spec mark_talks_selected(list(Talk.t())) :: list(Talk.t())
+  defp mark_talks_selected(talks) do
+    Enum.map(talks, fn talk -> Map.put(talk, :selected?, true) end)
+  end
+
+  @spec zip_with_selected_talks(Slot.t(), slot_map) :: Slot.t()
   defp zip_with_selected_talks(slot, talks_grouped_by_id) do
     cond do
       # replace slot talks with selected talks if available

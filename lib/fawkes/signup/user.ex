@@ -4,11 +4,12 @@ defmodule Fawkes.Signup.User do
   use Ecto.Schema
   import Ecto.Changeset
   alias Comeonin.Bcrypt
+  alias Ecto.Changeset
 
   @type t :: %__MODULE__{}
 
-  @spec changeset(t, map) :: Ecto.Changeset.t()
-  @spec registration_changeset(t, map) :: Ecto.Changeset.t()
+  @spec changeset(t, map) :: Changeset.t()
+  @spec registration_changeset(t, map) :: Changeset.t()
 
   @bad_passwords ~w(
     12345678

@@ -8,86 +8,25 @@ defmodule Fawkes.Profile do
   alias Fawkes.Profile.Info
   alias Fawkes.Profile.User
   alias Fawkes.Repo
-  @spec get_user(pos_integer) :: User.t() | nil
-  @spec fetch_or_create_for_user(User.t()) :: Info.t()
-  @spec fetch_info(User.t()) :: Info.t()
-  @spec info_changeset(Info.t() | nil) :: Ecto.Changeset.t() | nil
-  @spec update_info(User.t(), map) :: {:ok, Ecto.Schema.t()} | {:error, Ecto.Changeset.t()}
-  @spec agenda_item_changeset() :: Ecto.Changeset.t()
+
+  @typedoc """
+  This param type is used to search against Fawkes.Repo.Symbol types
+  """
+  @type slugable :: Fawkes.Repo.Symbol.t()
+
   @spec add_to_agenda(User.t(), pos_integer) ::
           {:ok, Ecto.Schema.t()} | {:error, Ecto.Changeset.t()}
-  @spec remove_from_agenda(User.t(), pos_integer) :: nil | :ok
+  @spec agenda_item_changeset() :: Ecto.Changeset.t()
   @spec fetch_agenda_item(pos_integer, pos_integer) :: AgendaItem.t()
   @spec fetch_attendance_counts(list(pos_integer)) :: [{atom, pos_integer}]
+  @spec fetch_info(User.t()) :: Info.t()
+  @spec fetch_or_create_for_user(User.t()) :: Info.t()
+  @spec fetch_user_profile(slugable) :: list(Info.t())
   @spec fetch_user_profiles() :: list(Info.t())
-
-  @doc """
-  Gets a single user. Returns a tuple with the status of the result.
-  """
-  def get_user(id) do
-    User
-    |> preload([[profile: [agenda_items: [:talk]]]])
-    |> where([user], user.id == ^id)
-    |> Repo.one()
-  end
-
-  @doc """
-  Given a string or atom used as an user profile slug - returns a user profile
-  """
-  def fetch_user_profile(slug) do
-    Info
-    |> where([info], info.slug == ^slug)
-    |> preload(agenda_items: [:talk])
-    |> Repo.one()
-  end
-
-  @doc """
-  Given a User - finds or created a new user profile for that user.
-  """
-  def fetch_or_create_for_user(%User{} = user, default_talk_ids) do
-    with %Info{} = profile <- fetch_info(user) do
-      profile
-    else
-      nil -> create_profile(user, default_talk_ids)
-    end
-  end
-
-  def fetch_or_create_for_user(_), do: nil
-
-  @doc """
-  Given a user - returns the profile information for that user
-  """
-  def fetch_info(profile_user) do
-    Info
-    |> where([info], info.user_id == ^profile_user.id)
-    |> Repo.one()
-  end
-
-  @doc """
-  Given profile information - returns a changeset for that information
-  """
-  def info_changeset(nil), do: nil
-
-  def info_changeset(info) do
-    Info.changeset(info, %{})
-  end
-
-  @doc """
-  Given a user with preloaded profile information and a params map -
-  attempts to updates the profile info with the given params
-  """
-  def update_info(%User{profile: profile}, params) when not is_nil(profile) do
-    profile
-    |> Info.changeset(params)
-    |> Repo.update()
-  end
-
-  @doc """
-  Returns an empty AgendaItem changeset
-  """
-  def agenda_item_changeset do
-    AgendaItem.changeset(%AgendaItem{}, %{})
-  end
+  @spec get_user(pos_integer) :: User.t() | nil
+  @spec info_changeset(Info.t() | nil) :: Ecto.Changeset.t() | nil
+  @spec remove_from_agenda(User.t(), pos_integer) :: nil | :ok
+  @spec update_info(User.t(), map) :: {:ok, Ecto.Schema.t()} | {:error, Ecto.Changeset.t()}
 
   @doc """
   Given a user with preloaded profile information and a talk_id -
@@ -100,15 +39,10 @@ defmodule Fawkes.Profile do
   end
 
   @doc """
-  Given a user with preloaded profile information and a talk_id -
-  attempts to remove an agenda item for that talk on the given profile
+  Returns an empty AgendaItem changeset
   """
-  def remove_from_agenda(%User{profile: profile}, talk_id) when not is_nil(profile) do
-    with %AgendaItem{} = item <- fetch_agenda_item(profile.id, talk_id) do
-      Repo.delete(item)
-    else
-      _ -> nil
-    end
+  def agenda_item_changeset do
+    AgendaItem.changeset(%AgendaItem{}, %{})
   end
 
   @doc """
@@ -137,6 +71,38 @@ defmodule Fawkes.Profile do
   end
 
   @doc """
+  Given a user - returns the profile information for that user
+  """
+  def fetch_info(profile_user) do
+    Info
+    |> where([info], info.user_id == ^profile_user.id)
+    |> Repo.one()
+  end
+
+  @doc """
+  Given a User - finds or created a new user profile for that user.
+  """
+  def fetch_or_create_for_user(%User{} = user, default_talk_ids) do
+    with %Info{} = profile <- fetch_info(user) do
+      profile
+    else
+      nil -> create_profile(user, default_talk_ids)
+    end
+  end
+
+  def fetch_or_create_for_user(_), do: nil
+
+  @doc """
+  Given a string or atom used as an user profile slug - returns a user profile
+  """
+  def fetch_user_profile(slug) do
+    Info
+    |> where([info], info.slug == ^slug)
+    |> preload(agenda_items: [:talk])
+    |> Repo.one()
+  end
+
+  @doc """
   Returns the profiles for all users
   """
   def fetch_user_profiles do
@@ -144,6 +110,47 @@ defmodule Fawkes.Profile do
     |> order_by([info], info.last)
     |> preload(agenda_items: [:talk])
     |> Repo.all()
+  end
+
+  @doc """
+  Gets a single user. Returns a tuple with the status of the result.
+  """
+  def get_user(id) do
+    User
+    |> preload([[profile: [agenda_items: [:talk]]]])
+    |> where([user], user.id == ^id)
+    |> Repo.one()
+  end
+
+  @doc """
+  Given profile information - returns a changeset for that information
+  """
+  def info_changeset(nil), do: nil
+
+  def info_changeset(info) do
+    Info.changeset(info, %{})
+  end
+
+  @doc """
+  Given a user with preloaded profile information and a talk_id -
+  attempts to remove an agenda item for that talk on the given profile
+  """
+  def remove_from_agenda(%User{profile: profile}, talk_id) when not is_nil(profile) do
+    with %AgendaItem{} = item <- fetch_agenda_item(profile.id, talk_id) do
+      Repo.delete(item)
+    else
+      _ -> nil
+    end
+  end
+
+  @doc """
+  Given a user with preloaded profile information and a params map -
+  attempts to updates the profile info with the given params
+  """
+  def update_info(%User{profile: profile}, params) when not is_nil(profile) do
+    profile
+    |> Info.changeset(params)
+    |> Repo.update()
   end
 
   @spec create_profile(User.t(), list(pos_integer)) :: Info.t()

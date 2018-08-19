@@ -9,6 +9,8 @@ defmodule Fawkes.Schedule.Location do
 
   @type t :: %__MODULE__{}
 
+  @spec changeset(t, map) :: Changeset.t()
+
   schema "locations" do
     field(:name, :string)
     field(:slug, SymbolType)

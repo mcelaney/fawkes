@@ -10,6 +10,8 @@ defmodule Fawkes.Schedule.Audience do
 
   @type t :: %__MODULE__{}
 
+  @spec changeset(t, map) :: Changeset.t()
+
   schema "audiences" do
     field(:name, :string)
     field(:slug, SymbolType)

@@ -6,6 +6,8 @@ defmodule Fawkes.Repo.Symbol do
 
   @behaviour Ecto.Type
 
+  @type t :: atom | String.t()
+
   def type, do: :string
 
   def cast(nil) do

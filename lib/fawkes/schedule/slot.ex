@@ -13,6 +13,8 @@ defmodule Fawkes.Schedule.Slot do
 
   @type t :: %__MODULE__{}
 
+  @spec changeset(t, map) :: Changeset.t()
+
   schema "schedule_slots" do
     field(:finish, :naive_datetime)
     field(:slug, SymbolType)

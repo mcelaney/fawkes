@@ -1,10 +1,14 @@
 defmodule Fawkes.Profile.AgendaItem do
-  @moduledoc false
+  @moduledoc """
+  Talks a user has added to their agenda
+  """
 
   use Ecto.Schema
   import Ecto.Changeset
 
   @type t :: %__MODULE__{}
+
+  @spec changeset(t, map) :: Changeset.t()
 
   schema "profiles_talks" do
     belongs_to(:talk, Fawkes.Profile.Talk)

@@ -1,5 +1,7 @@
 defmodule Fawkes.Profile.User do
-  @moduledoc false
+  @moduledoc """
+  Represents a Fawkes.Auth.User in the Fawkes.Profile context
+  """
 
   use Ecto.Schema
 

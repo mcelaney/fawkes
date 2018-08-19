@@ -10,6 +10,8 @@ defmodule Fawkes.Schedule.Speaker do
 
   @type t :: %__MODULE__{}
 
+  @spec changeset(t, map) :: Changeset.t()
+
   schema "profiles" do
     field(:company, :string)
     field(:description, :string)

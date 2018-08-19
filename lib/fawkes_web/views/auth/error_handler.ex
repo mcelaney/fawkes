@@ -4,6 +4,9 @@ defmodule FawkesWeb.Auth.ErrorHandler do
   """
 
   import Plug.Conn
+  alias Plug.Conn
+
+  @spec auth_error(Conn.t(), tuple, any) :: Conn.t()
 
   def auth_error(conn, {type, _reason}, _opts) do
     conn
