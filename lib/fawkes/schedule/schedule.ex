@@ -46,6 +46,15 @@ defmodule Fawkes.Schedule do
     |> Repo.one
   end
 
+  def fetch_for_talks(talk_ids) do
+    Slot
+    |> join(:inner, [slot], talks in assoc(slot, :talks))
+    |> where([_slot, talks], talks.id in ^talk_ids)
+    |> preload([_, talks], [talks: {talks, [:speaker, :category, :audience, :location]}])
+    |> order_by([slot], slot.start)
+    |> Repo.all
+  end
+
   @doc """
   Given a string or atom used as an audience slug - returns a list of slots.
 

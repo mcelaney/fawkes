@@ -36,7 +36,10 @@
               </li>
             <% else %>
               <li>
-                <%= link gettext("Agenda"), to: schedule_path(@conn, :index) %>
+                <%= link gettext("Agenda"), to: agenda_item_path(@conn, :index) %>
+              </li>
+              <li>
+                <%= link gettext("Attendees"), to: profile_path(@conn, :index) %>
               </li>
             <% end %>
             <li>

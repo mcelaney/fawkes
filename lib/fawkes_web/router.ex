@@ -48,7 +48,8 @@ defmodule FawkesWeb.Router do
     resources "/category", CategoryController, only: [:show]
     resources "/speaker", SpeakerController, only: [:index, :show]
     resources "/talk", TalkController, only: [:show]
-    resources "/profile", ProfileController, only: [:show]
+    resources "/profile", ProfileController, only: [:index, :show]
+    resources "/user", ProfileController, only: [:index, :show]
   end
 
   # Definitely logged in scope

@@ -18,6 +18,7 @@ defmodule Fawkes.Profile do
   @spec remove_from_agenda(User.t, pos_integer) :: nil | :ok
   @spec fetch_agenda_item(pos_integer, pos_integer) :: AgendaItem.t
   @spec fetch_attendance_counts(list(pos_integer)) :: [{atom, pos_integer}]
+  @spec fetch_user_profiles() :: list(Info.t)
 
   @doc """
   Gets a single user. Returns a tuple with the status of the result.
@@ -35,6 +36,7 @@ defmodule Fawkes.Profile do
   def fetch_user_profile(slug) do
     Info
     |> where([info], info.slug == ^slug)
+    |> preload([agenda_items: [:talk]])
     |> Repo.one
   end
 
@@ -130,6 +132,16 @@ defmodule Fawkes.Profile do
            count(item.id)
          }
        )
+    |> Repo.all
+  end
+
+  @doc """
+  Returns the profiles for all users
+  """
+  def fetch_user_profiles do
+    Info
+    |> order_by([info], info.last)
+    |> preload([agenda_items: [:talk]])
     |> Repo.all
   end
 

@@ -4,8 +4,22 @@ defmodule FawkesWeb.ProfileController do
   alias Fawkes.Profile
   alias Fawkes.Schedule
 
+  def index(conn, _) do
+    render(conn, "index.html", profiles: Profile.fetch_user_profiles())
+  end
+
   def show(conn, %{"id" => slug}) do
-    render(conn, "show.html", user: Profile.fetch_user_profile(slug))
+    profile = Profile.fetch_user_profile(slug)
+    schedule =
+      profile.agenda_items
+      |> Enum.map(fn(%{talk_id: id}) -> id end)
+      |> Schedule.fetch_for_talks()
+
+    render(conn, "show.html",
+                 user: profile,
+                 schedules: group_schedule_by_dates(schedule),
+                 talk_counts: talk_counts(schedule),
+                 agenda_item_slugs: talk_slug_mapset(conn))
   end
 
   def edit(conn, _params) do

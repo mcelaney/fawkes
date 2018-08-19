@@ -3,9 +3,10 @@
   <%= link("Agenda", to: agenda_item_path(@conn, :index)) %>
 </div>
 
-<div>
-  <%= for {date, slots} <- @schedules do %>
-    <h1><%= Timex.format!(date, "%A %B %e, %Y", :strftime) %></h1>
-    <%= render(__MODULE__, "date.html", Map.put(assigns, :slots, slots)) %>
-  <% end %>
-</div>
+<%=
+  render(FawkesWeb.ScheduleView, "schedule_slots.html",
+                                 conn: @conn,
+                                 schedules: @schedules,
+                                 talk_counts: @talk_counts,
+                                 agenda_item_slugs: @agenda_item_slugs)
+%>
