@@ -41,16 +41,22 @@ defmodule Fawkes.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:guardian, "~> 1.0"},
-      {:comeonin, "~> 4.0"},
+
+      # For authentication
       {:bcrypt_elixir, "~> 1.0"},
+      {:comeonin, "~> 4.0"},
+      {:guardian, "~> 1.0"},
+
+      # For datetime formating
       {:timex, "~> 3.3"},
+
+      # For S3 integration and image uploads
       {:arc, "~> 0.10"},
       {:arc_ecto, "~> 0.10"},
       {:ex_aws, "~> 2.0"},
       {:ex_aws_s3, "~> 2.0"},
-      {:poison, "~> 3.0"},
       {:hackney, "~> 1.9"},
+      {:poison, "~> 3.0"},
       {:sweet_xml, "~> 0.6"}
     ]
   end

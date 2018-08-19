@@ -22,3 +22,5 @@ config :fawkes, Fawkes.Repo,
 config :fawkes, Fawkes.Auth.Guardian,
        issuer: "fawkes",
        secret_key: "akey"
+
+import_config "test.secret.exs"
