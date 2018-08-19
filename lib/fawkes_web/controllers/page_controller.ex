@@ -13,7 +13,7 @@ defmodule FawkesWeb.PageController do
       conn
       |> put_flash(:success, gettext("Welcome back!"))
       |> GuardianPlug.sign_in(user)
-      |> redirect(to: page_path(conn, :timeline))
+      |> redirect(to: schedule_path(conn, :index))
     else
       {:error, :incorrect} ->
         conn

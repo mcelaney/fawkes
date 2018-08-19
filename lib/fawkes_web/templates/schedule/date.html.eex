@@ -1,5 +1,6 @@
 <div>
   <%= for slot <- @slots do %>
+  <%= unless is_nil @conn.assigns.current_user do %>
   <h2>
     <%=
       if talks_exist?(slot) do
@@ -11,6 +12,7 @@
       end
     %>
   </h2>
+  <% end %>
   <%=
     render_slot(slot, [
       slot: slot,
