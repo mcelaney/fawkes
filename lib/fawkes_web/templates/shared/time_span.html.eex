@@ -1,1 +1,5 @@
-<time datetime=<%= @start_datetime %>><%= @start_time %></time> - <time datetime=<%= @finish_datetime %>><%= @finish_time %></time>
+<div class="timespan">
+  <time datetime=<%= @start_datetime %>><%= @start_time %></time>
+  -
+  <time datetime=<%= @finish_datetime %>><%= @finish_time %></time>
+</div>

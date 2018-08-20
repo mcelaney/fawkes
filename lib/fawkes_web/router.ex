@@ -45,6 +45,7 @@ defmodule FawkesWeb.Router do
     resources("/schedule", ScheduleController, only: [:index, :show])
     resources("/audience", AudienceController, only: [:show])
     resources("/category", CategoryController, only: [:show])
+    resources("/location", LocationController, only: [:show])
     resources("/speaker", SpeakerController, only: [:index, :show])
     resources("/talk", TalkController, only: [:show])
     resources("/profile", ProfileController, only: [:index, :show])

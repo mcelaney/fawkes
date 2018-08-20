@@ -1,18 +1,5 @@
 <div>
   <%= for slot <- @slots do %>
-  <%= unless is_nil @conn.assigns.current_user do %>
-  <h2>
-    <%=
-      if talks_exist?(slot) do
-        slot
-        |> SharedView.render_timespan()
-        |> link(to: schedule_path(@conn, :show, slot.slug))
-      else
-        SharedView.render_timespan(slot)
-      end
-    %>
-  </h2>
-  <% end %>
   <%=
     render_slot(slot, [
       slot: slot,

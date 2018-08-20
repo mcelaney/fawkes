@@ -1,0 +1,56 @@
+.timespan {
+  color: $secondary-text-color; }
+
+.panel-title {
+  font-size: $panel-title-text-size;
+  font-weight: normal; }
+
+.panel-title a {
+  font-size: 1em;
+  font-weight: normal;
+  color: $primary-text-color; }
+
+.panel-detail a {
+  color: $primary-text-color; }
+
+.audience-flag {
+  @include flag($meta-text-color, $meta-background, $pill-radius);
+
+  &:hover {
+    text-decoration: underline; }
+}
+
+.category-flag {
+  @include flag($meta-text-color, $meta-background, $pill-radius);
+
+  &:hover {
+    text-decoration: underline; }
+}
+
+.audience-count {
+  @include flag($primary-text-color, $dark-background, $pill-radius); }
+
+a.agenda {
+  color: $action-color; }
+
+button.agenda {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  font-family: $main-font-family; /*input has OS specific font-family*/
+  color: $action-color;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline; }
+}
+
+.schedule-weekday {
+  font-weight: normal;
+  color: $action-color; }
+
+.schedule-date {
+  font-size: $panel-title-text-size;
+  font-weight: normal;
+  color: $action-color; }

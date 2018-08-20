@@ -15,6 +15,7 @@ defmodule Fawkes.Schedule do
   @spec fetch(list(pos_integer) | slugable) :: list(Slot.t()) | Slot.t()
   @spec fetch_by_audience(slugable) :: list(Slot.t())
   @spec fetch_by_category(slugable) :: list(Slot.t())
+  @spec fetch_by_location(slugable) :: list(Slot.t())
   @spec fetch_for_talks(list(pos_integer)) :: list(Slot.t())
   @spec fetch_speakers() :: list(Speaker.t())
   @spec fetch_speakers(slugable) :: Speaker.t()
@@ -82,6 +83,22 @@ defmodule Fawkes.Schedule do
     |> join(:left, [slot], talks in assoc(slot, :talks))
     |> join(:left, [_slot, talks], categories in assoc(talks, :category))
     |> where([_slot, _talks, categories], categories.slug == ^slug)
+    |> preload([_, talks], [:event, [talks: {talks, [:speaker, :category, :audience, :location]}]])
+    |> order_by([slot], slot.start)
+    |> Repo.all()
+  end
+
+  @doc """
+  Given a string or atom used as an location slug - returns a list of slots.
+
+  Only talks related to the slug are returned.
+  Only slugs containing talks are returned.
+  """
+  def fetch_by_location(slug) do
+    Slot
+    |> join(:left, [slot], talks in assoc(slot, :talks))
+    |> join(:left, [_slot, talks], locations in assoc(talks, :location))
+    |> where([_slot, _talks, locations], locations.slug == ^slug)
     |> preload([_, talks], [:event, [talks: {talks, [:speaker, :category, :audience, :location]}]])
     |> order_by([slot], slot.start)
     |> Repo.all()

@@ -1,0 +1,57 @@
+.m-schedule-panel {
+  background-color: $light-background;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-bottom: 1em;
+  padding-right: 1em;
+  margin: 1em;
+  width: 430px;
+  display: inline-block;
+  @include rounded(5px);
+
+  h3 {
+    padding-bottom: 8px;}
+}
+
+.m-panel-details {
+  margin-bottom: 8px;
+
+  panel-detail {
+    display: inline-block;
+    float: left; }
+}
+
+.m-flags {
+  display: inline-block;
+  margin-bottom: 8px;
+
+  li {
+    padding: none;
+    list-style: none;
+    display: inline-block;
+    float: left;
+    margin-right: 8px; }
+}
+
+.agenda-selector {
+  margin-top: 4px;
+  display: inline-block;
+  float: left; }
+
+.audience-count {
+  display: inline-block;
+  float: right;
+}
+
+.m-date-header {
+  @include rounded(6px);
+  padding: 5px;
+  border: 1px solid $action-color;
+  width: 60px;
+  text-align: center;
+  background-color: #fff;
+  margin: 1em;
+
+  .schedule-weekday {
+    display: block; }
+}

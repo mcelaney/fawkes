@@ -1,19 +1,28 @@
 <%= unless is_nil @conn.assigns.current_user do %>
-    <div>
+  <div class="m-agenda-tools">
+    <div class="agenda-selector">
       <%= if @talk.selected? || MapSet.member?(@agenda_item_slugs, @talk.slug) do %>
-        <%= link "Remove from agenda", to: agenda_item_path(@conn, :delete, @talk.id), method: :delete, data: [confirm: "Are you sure?"] %>
+        <i class="fa fa-calendar-minus-o"></i>
+        <%=
+          link(gettext("Remove from agenda"), to: agenda_item_path(@conn, :delete, @talk.id),
+                                              method: :delete,
+                                              data: [confirm: gettext("Are you sure?")],
+                                              class: "agenda")
+        %>
       <% else %>
       <span>
         <%= form_for agenda_item_changeset(), agenda_item_path(@conn, :create), fn f -> %>
           <div class="form-group">
             <%= hidden_input(f, :talk_id, value: @talk.id) %>
-            <%= submit gettext("Add to Agenda"), class: "btn btn-primary" %>
+            <i class="fa fa-calendar-plus-o"></i>
+            <%= submit gettext("Add to Agenda"), class: "agenda" %>
           </div>
         <% end %>
       </span>
       <% end %>
     </div>
     <div>
-      <p>Number Attending: <%= @talk_counts[@talk.slug] || 0 %></p>
+      <p class="audience-count"><%= @talk_counts[@talk.slug] || 0 %></p>
     </div>
+  </div>
 <% end %>
